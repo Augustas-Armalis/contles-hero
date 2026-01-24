@@ -27,7 +27,7 @@ function Home() {
     >
       <section className="relative w-full h-fit max-w-[1100px] flex items-center justify-between">
 
-        <Link to="/"><img src="/branding/logo.svg" alt="Contles" className="w-auto h-[24px]" /></Link>
+        <Link to="/"><img src={`${import.meta.env.BASE_URL}branding/logo.svg`} alt="Contles" className="w-auto h-[24px]" /></Link>
 
         <div className="flex items-center gap-[6px] justify-center">
           
@@ -204,7 +204,7 @@ function Home() {
             }}
           >
             <motion.img 
-              src="/logos/tesonet.svg" 
+              src={`${import.meta.env.BASE_URL}logos/tesonet.svg`} 
               alt="Tesonet" 
               className="w-auto h-[36px]"
               variants={{
@@ -225,7 +225,7 @@ function Home() {
               }}
             />
             <motion.img 
-              src="/logos/unicorns.svg" 
+              src={`${import.meta.env.BASE_URL}logos/unicorns.svg`} 
               alt="Unicorns" 
               className="w-auto h-[36px]"
               variants={{
@@ -246,7 +246,7 @@ function Home() {
               }}
             />
             <motion.img 
-              src="/logos/cannumo.svg" 
+              src={`${import.meta.env.BASE_URL}logos/cannumo.svg`} 
               alt="Cannumo" 
               className="w-auto h-[36px]"
               variants={{
@@ -267,7 +267,7 @@ function Home() {
               }}
             />
             <motion.img 
-              src="/logos/surfshark.svg" 
+              src={`${import.meta.env.BASE_URL}logos/surfshark.svg`} 
               alt="Surfshark" 
               className="w-auto h-[36px]"
               variants={{
@@ -288,7 +288,7 @@ function Home() {
               }}
             />
             <motion.img 
-              src="/logos/saily.svg" 
+              src={`${import.meta.env.BASE_URL}logos/saily.svg`} 
               alt="Saily" 
               className="w-auto h-[36px]"
               variants={{
@@ -309,7 +309,7 @@ function Home() {
               }}
             />
             <motion.img 
-              src="/logos/tv3.svg" 
+              src={`${import.meta.env.BASE_URL}logos/tv3.svg`} 
               alt="TV3" 
               className="w-auto h-[36px]"
               variants={{
@@ -330,7 +330,7 @@ function Home() {
               }}
             />
             <motion.img 
-              src="/logos/brite.svg" 
+              src={`${import.meta.env.BASE_URL}logos/brite.svg`} 
               alt="Brite" 
               className="w-auto h-[36px]"
               variants={{
@@ -351,7 +351,7 @@ function Home() {
               }}
             />
             <motion.img 
-              src="/logos/ism.svg" 
+              src={`${import.meta.env.BASE_URL}logos/ism.svg`} 
               alt="ISM" 
               className="w-auto h-[36px]"
               variants={{
@@ -397,12 +397,12 @@ function Home() {
           delay: 1.2,
         }}
       >
-        <img className="w-full h-full object-cover absolute top-0 left-0" src="/assets/texture.png" alt="Texture"/>
+        <img className="w-full h-full object-cover absolute top-0 left-0" src={`${import.meta.env.BASE_URL}assets/texture.png`} alt="Texture"/>
 
 
         <div className="w-fit h-fit flex absolute top-[58px] left-[58px] right-[58px] items-center justify-center !p-[6px] backdrop-blur-[28px] border border-white/20 bg-white/24 shadow-[inset_0_0_8.1px_0_rgba(255,255,255,0.14)] rounded-[17px]">
         
-          <img src="/product/projects.png" alt="img" className="w-full h-auto object-cover rounded-[12px]" />
+          <img src={`${import.meta.env.BASE_URL}product/projects.png`} alt="img" className="w-full h-auto object-cover rounded-[12px]" />
 
 
         </div>
@@ -415,22 +415,22 @@ function Home() {
         <div className="w-fit h-fit flex items-center justify-center gap-[6px] !mt-[14px] bg-white border border-border rounded-[14px] !p-[6px] shadow-[-20px_207px_58px_0_rgba(0,0,0,0),_-13px_133px_53px_0_rgba(0,0,0,0.01),_-7px_75px_45px_0_rgba(0,0,0,0.03),_-3px_33px_33px_0_rgba(0,0,0,0.06),_-1px_8px_18px_0_rgba(0,0,0,0.07)]">
 
           <button className="w-fit h-fit flex items-center justify-center gap-[6px] !px-[14px] !py-[6px] rounded-[10px] border border-border bg-white cursor-pointer hover:bg-bg transition-ease-out duration-200">
-            <img src="/heroicons/search.svg" alt="icon" className="w-[14px] h-[14px] opacity-54" />
+            <img src={`${import.meta.env.BASE_URL}heroicons/search.svg`} alt="icon" className="w-[14px] h-[14px] opacity-54" />
             <p className="text-alt alt">Projects</p>
           </button>
 
           <button className="w-fit h-fit flex items-center justify-center gap-[6px] !px-[14px] !py-[6px] rounded-[10px] border border-border bg-white cursor-pointer hover:bg-bg transition-ease-out duration-200">
-            <img src="/heroicons/chat.svg" alt="icon" className="w-[14px] h-[14px] opacity-54" />
+            <img src={`${import.meta.env.BASE_URL}heroicons/chat.svg`} alt="icon" className="w-[14px] h-[14px] opacity-54" />
             <p className="text-alt alt">Collaborate</p>
           </button>
 
           <button className="w-fit h-fit flex items-center justify-center gap-[6px] !px-[14px] !py-[6px] rounded-[10px] border border-border bg-white cursor-pointer hover:bg-bg transition-ease-out duration-200">
-            <img src="/heroicons/speaker.svg" alt="icon" className="w-[14px] h-[14px] opacity-54" />
+            <img src={`${import.meta.env.BASE_URL}heroicons/speaker.svg`} alt="icon" className="w-[14px] h-[14px] opacity-54" />
             <p className="text-alt alt">Campaigns</p>
           </button>
 
           <button className="w-fit h-fit flex items-center justify-center gap-[6px] !px-[14px] !py-[6px] rounded-[10px] border border-border bg-white cursor-pointer hover:bg-bg transition-ease-out duration-200">
-            <img src="/heroicons/wallet.svg" alt="icon" className="w-[14px] h-[14px] opacity-54" />
+            <img src={`${import.meta.env.BASE_URL}heroicons/wallet.svg`} alt="icon" className="w-[14px] h-[14px] opacity-54" />
             <p className="text-alt alt">Payments</p>
           </button>
 
@@ -441,7 +441,7 @@ function Home() {
 
           <div className="w-full h-fit flex flex-col items-center justify-center">
 
-            <img src="/heroicons/briefcase.svg" alt="icon" className="w-[18px] h-[18px] mb-[6px]" />
+            <img src={`${import.meta.env.BASE_URL}heroicons/briefcase.svg`} alt="icon" className="w-[18px] h-[18px] mb-[6px]" />
             <p className="text-brands bentotitle">Brands</p>
 
             <p className="!mt-[16px] text-alt alt text-center max-w-[400px] !leading-[150%]">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis in augue erat. Vivamus non leo in nunc lacinia</p>
@@ -454,7 +454,7 @@ function Home() {
 
           <div className="w-full h-fit flex flex-col items-center justify-center">
 
-            <img src="/heroicons/camera.svg" alt="icon" className="w-[18px] h-[18px] mb-[6px]" />
+            <img src={`${import.meta.env.BASE_URL}heroicons/camera.svg`} alt="icon" className="w-[18px] h-[18px] mb-[6px]" />
             <p className="text-creators bentotitle">Creators</p>
 
             <p className="!mt-[16px] text-alt alt text-center max-w-[400px] !leading-[150%]">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis in augue erat. Vivamus non leo in nunc lacinia</p>
