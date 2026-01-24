@@ -328,7 +328,7 @@ letter-spacing: -1.32px;
 }
 
 .alt-small-button:hover {
-	background: var(--bg);
+	background: #F2F2F2;
 	transition: all 0.1s ease-out;
 }
 
