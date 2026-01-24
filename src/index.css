@@ -23,6 +23,7 @@ body {
   -webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	text-rendering: optimizeLegibility;
+	background-color: var(--bg);
 }
 
 input,
@@ -76,7 +77,7 @@ video {
 	--color-alt: #808080;
 	
 	--color-brands: #5f0eec;
-	--color-influencers: #fc6262;
+	--color-creators: #fc6262;
 	--color-text: #141414;
 	--color-black: #000000;
 	
@@ -132,7 +133,7 @@ video {
 	--alt: var(--color-alt);
 	
 	--brands: var(--color-brands);
-	--influencers: var(--color-influencers);
+	--creators: var(--color-creators);
 	--text: var(--color-text);
 	--black: var(--color-black);
 	
@@ -183,10 +184,45 @@ video {
 
 
 
+/* Prevent visual glitches - hide animated elements initially */
+.hero-section {
+	opacity: 0;
+	visibility: hidden;
+}
+
+.hero-section [class*="motion"] {
+	opacity: 0;
+	visibility: hidden;
+}
+
+
+
+
+
+
 
 
 
 /* Text */
+
+.smalalt{
+text-align: center;
+font-family: Inter;
+font-size: 14px;
+font-style: normal;
+font-weight: 500;
+letter-spacing: -0.42px;
+}
+
+.alt{
+	font-family: Inter;
+	font-size: 16px;
+	font-style: normal;
+	color: var(--alt);
+	font-weight: 540;
+	line-height: normal;
+	letter-spacing: -0.48px;
+}
 
 .bigalt {
   text-align: center;
@@ -203,9 +239,28 @@ video {
 	font-family: Inter;
 	font-size: 18px;
 	font-style: normal;
-	font-weight: 500;
+	font-weight: 520;
 	line-height: normal;
 	letter-spacing: -0.54px;
+}
+
+.small-button-text {
+	font-family: Inter;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 520;
+	line-height: normal;
+	letter-spacing: -0.48px;
+}
+
+
+.bentotitle {
+font-family: Inter;
+font-size: 22px;
+font-style: normal;
+font-weight: 560;
+line-height: normal;
+letter-spacing: -1.32px;
 }
 
 
@@ -217,7 +272,7 @@ video {
 	display: flex;
 	cursor: pointer;
 	width: fit-content;
-	padding: 8px 18px;
+	padding: 8.5px 18px;
 	justify-content: center;
 	align-items: center;
 	gap: 10px;
@@ -232,4 +287,48 @@ video {
 .big-button:hover{
 	box-shadow: none;
 	border: 1px solid rgba(255, 255, 255, 0.5);
+	background: linear-gradient(202deg, #454545 12.34%, #151515 91.37%);
 }
+
+
+
+
+
+.small-button {
+	cursor: pointer;
+	display: flex;
+	padding: 7px 14px;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	border-radius: 11px;
+	border: 1px solid rgba(255, 255, 255, 0.20);
+	background: linear-gradient(202deg, #333 12.34%, #151515 91.37%);
+	transition: all 0.2s ease-out;
+}
+
+.small-button:hover {
+	background: linear-gradient(202deg, #454545 12.34%, #151515 91.37%);
+	transition: all 0.2s ease-out;
+}
+
+
+
+.alt-small-button {
+	cursor: pointer;
+	display: flex;
+	padding: 7px 14px;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	border-radius: 11px;
+	border: 1px solid var(--border);
+	background: var(--white);
+	transition: all 0.1s ease-out;
+}
+
+.alt-small-button:hover {
+	background: var(--bg);
+	transition: all 0.1s ease-out;
+}
+

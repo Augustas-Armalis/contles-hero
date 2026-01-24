@@ -11,7 +11,7 @@ function About() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <Link to="/" className="text-2xl font-bold text-purple-600 hover:text-purple-800 transition-colors">
+            <Link to="/" className="text-2xl font-bold text-brands hover:text-brands/80 transition-colors">
               Contles
             </Link>
           </motion.div>
