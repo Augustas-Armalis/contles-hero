@@ -44,7 +44,7 @@ function Home() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="text-xl text-gray-600 mb-8"
           >
-            Your landing page starts here. Build something amazing.
+            Your landing page starts here. Build something amazing. CONTLES
           </motion.p>
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
