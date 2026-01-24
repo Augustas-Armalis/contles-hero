@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "deploy": "npm run build && git add -A && git commit -m \"Auto-deploy: $(date)\" --allow-empty && git push origin main"
+    "deploy": "npm run build && rm -rf docs && mkdir -p docs && cp -R dist/* docs && touch docs/.nojekyll && git add -A && git commit -m \"Auto-deploy: $(date)\" --allow-empty && git push origin main"
   },
   "dependencies": {
     "framer-motion": "^12.29.0",
