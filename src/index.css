@@ -64,3 +64,118 @@ video {
 	pointer-events: none;
 	user-select: none;
 }
+
+
+
+
+@theme {
+	--color-white: #ffffff;
+	--color-hover: #ebebeb;
+	--color-bg: #f7f7f7;
+	--color-border: #e8e8e8;
+	--color-alt: #808080;
+	
+	--color-brands: #5f0eec;
+	--color-influencers: #fc6262;
+	--color-text: #141414;
+	--color-black: #000000;
+	
+	--color-green-bg: #e6f8ef;
+	--color-green-border: #9fe1bf;
+	--color-green-text: #18965a;
+	
+	--color-blue-bg: #ecf3ff;
+	--color-blue-border: #afcfff;
+	--color-blue-text: #2563eb;
+	
+	--color-red-bg: #fdeceb;
+	--color-red-border: #f4b1b1;
+	--color-red-text: #dc3b3b;
+	
+	--color-yellow-bg: #fff7e1;
+	--color-yellow-border: #f3dea0;
+	--color-yellow-text: #e0ac00;
+	
+	--color-purple-bg: #f1eeff;
+	--color-purple-border: #c7b6ff;
+	--color-purple-text: #5a32e6;
+	
+	--color-orange-bg: #fff0e3;
+	--color-orange-border: #f6be96;
+	--color-orange-text: #d96516;
+	
+	--color-cyan-bg: #e9fafa;
+	--color-cyan-border: #a4e6e6;
+	--color-cyan-text: #007d7d;
+	
+	--color-pink-bg: #fdeaf3;
+	--color-pink-border: #f4b4d2;
+	--color-pink-text: #c23674;
+	
+	--color-creator-bg: #fdeafa;
+	--color-creator-border: #f7b2b2;
+	--color-creator-text: #f56969;
+	
+	--color-brand-bg: #efe9ff;
+	--color-brand-border: #b8a3f0;
+	--color-brand-text: #511ab0;
+	
+	--color-sidebar-hover: #f0f0f0;
+	--color-chat-bubble: #f0f0f0;
+}
+
+:root {
+	--white: var(--color-white);
+	--hover: var(--color-hover);
+	--bg: var(--color-bg);
+	--border: var(--color-border);
+	--alt: var(--color-alt);
+	
+	--brands: var(--color-brands);
+	--influencers: var(--color-influencers);
+	--text: var(--color-text);
+	--black: var(--color-black);
+	
+	--green-bg: var(--color-green-bg);
+	--green-border: var(--color-green-border);
+	--green-text: var(--color-green-text);
+	
+	--blue-bg: var(--color-blue-bg);
+	--blue-border: var(--color-blue-border);
+	--blue-text: var(--color-blue-text);
+	
+	--red-bg: var(--color-red-bg);
+	--red-border: var(--color-red-border);
+	--red-text: var(--color-red-text);
+	
+	--yellow-bg: var(--color-yellow-bg);
+	--yellow-border: var(--color-yellow-border);
+	--yellow-text: var(--color-yellow-text);
+	
+	--purple-bg: var(--color-purple-bg);
+	--purple-border: var(--color-purple-border);
+	--purple-text: var(--color-purple-text);
+	
+	--orange-bg: var(--color-orange-bg);
+	--orange-border: var(--color-orange-border);
+	--orange-text: var(--color-orange-text);
+	
+	--cyan-bg: var(--color-cyan-bg);
+	--cyan-border: var(--color-cyan-border);
+	--cyan-text: var(--color-cyan-text);
+	
+	--pink-bg: var(--color-pink-bg);
+	--pink-border: var(--color-pink-border);
+	--pink-text: var(--color-pink-text);
+	
+	--creator-bg: var(--color-creator-bg);
+	--creator-border: var(--color-creator-border);
+	--creator-text: var(--color-creator-text);
+	
+	--brand-bg: var(--color-brand-bg);
+	--brand-border: var(--color-brand-border);
+	--brand-text: var(--color-brand-text);
+	
+	--sidebar-hover: var(--color-sidebar-hover);
+	--chat-bubble: var(--color-chat-bubble);
+}
