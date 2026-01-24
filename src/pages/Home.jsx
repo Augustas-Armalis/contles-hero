@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 
 function Home() {
   return (
+
+    
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       <nav className="container mx-auto px-6 py-8">
         <div className="flex justify-between items-center">
@@ -44,7 +46,7 @@ function Home() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="text-xl text-gray-600 mb-8"
           >
-            Your landing page starts here. Build something amazing. CONTLES IS THE BEST
+            Your landing page starts here. Build something amazing
           </motion.p>
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
