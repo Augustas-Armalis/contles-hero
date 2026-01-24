@@ -5,7 +5,7 @@ import './index.css'
 import App from './App.jsx'
 
 // Get the base path from the current location (for GitHub Pages)
-const basename = import.meta.env.PROD ? '/Contles-landing' : ''
+const basename = import.meta.env.PROD ? '/contles-hero' : ''
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
