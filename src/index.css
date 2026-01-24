@@ -179,3 +179,57 @@ video {
 	--sidebar-hover: var(--color-sidebar-hover);
 	--chat-bubble: var(--color-chat-bubble);
 }
+
+
+
+
+
+
+
+/* Text */
+
+.bigalt {
+  text-align: center;
+	font-family: Inter;
+	font-size: 18px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 150%; /* 27px */
+	letter-spacing: -0.54px;
+}
+
+.button-text {
+	text-align: center;
+	font-family: Inter;
+	font-size: 18px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	letter-spacing: -0.54px;
+}
+
+
+
+
+/* Components */
+
+.big-button {
+	display: flex;
+	cursor: pointer;
+	width: fit-content;
+	padding: 8px 18px;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	border-radius: 12px;
+	border: 1px solid rgba(255, 255, 255, 0.20);
+	background: linear-gradient(202deg, #333 12.34%, #151515 91.37%), linear-gradient(187deg, var(--influencers, #fc6262) 4.29%, var(--brands, #5f0eec) 129.6%);
+	box-shadow: 0 112px 31px 0 rgba(0, 0, 0, 0.00), 0 72px 29px 0 rgba(0, 0, 0, 0.01), 0 40px 24px 0 rgba(0, 0, 0, 0.05), 0 18px 18px 0 rgba(0, 0, 0, 0.09), 0 4px 10px 0 rgba(0, 0, 0, 0.10);
+	transition: all 0.2s ease-out;
+}
+
+
+.big-button:hover{
+	box-shadow: none;
+	border: 1px solid rgba(255, 255, 255, 0.5);
+}
