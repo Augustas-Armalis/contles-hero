@@ -224,6 +224,13 @@ letter-spacing: -0.42px;
 	letter-spacing: -0.48px;
 }
 
+
+@media (max-width: 650px) {
+	.alt {
+		font-size: 14px;
+	}
+}
+
 .bigalt {
   text-align: center;
 	font-family: Inter;
@@ -232,6 +239,12 @@ letter-spacing: -0.42px;
 	font-weight: 500;
 	line-height: 150%; /* 27px */
 	letter-spacing: -0.54px;
+}
+
+@media (max-width: 650px) {
+	.bigalt {
+		font-size: 16px;
+	}
 }
 
 .button-text {
@@ -331,4 +344,39 @@ letter-spacing: -1.32px;
 	background: #F2F2F2;
 	transition: all 0.1s ease-out;
 }
+
+
+
+
+
+
+
+
+/* Logo Carousel */
+.logo-carousel-container {
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+	/* Wider side fade */
+	mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+	-webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+}
+
+.logo-carousel-track {
+	display: flex;
+	width: max-content;
+	will-change: transform;
+}
+
+.logo-carousel-set {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 32px;
+	flex-shrink: 0;
+	padding: 0 16px;
+	white-space: nowrap;
+}
+
+/* Keyframes removed: JS drives the marquee for truly seamless looping. */
 
