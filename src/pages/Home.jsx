@@ -5,12 +5,13 @@ import { DotLottieReact } from '@lottiefiles/dotlottie-react'
 
 const LOGOS = [
   { name: 'tesonet', alt: 'Tesonet' },
-  { name: 'unicorns', alt: 'Unicorns' },
+  { name: 'chazz', alt: 'Chazz' },
   { name: 'cannumo', alt: 'Cannumo' },
   { name: 'surfshark', alt: 'Surfshark' },
-  { name: 'saily', alt: 'Saily' },
-  { name: 'tv3', alt: 'TV3' },
   { name: 'brite', alt: 'Brite' },
+  { name: 'unicorns', alt: 'Unicorns' },
+  { name: 'tv3', alt: 'TV3' },
+  { name: 'saily', alt: 'Saily' },
   { name: 'ism', alt: 'ISM' },
 ]
 
@@ -657,7 +658,7 @@ function Home() {
             {logos.map((logo) => (
               <motion.img 
                 key={logo.name}
-                src={`${import.meta.env.BASE_URL}logos/${logo.name}.svg`} 
+                src={`${import.meta.env.BASE_URL}logos/${logo.name}.png`} 
                 alt={logo.alt} 
                 className="w-auto h-[36px]"
                 variants={{
