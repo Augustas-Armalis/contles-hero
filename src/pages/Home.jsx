@@ -314,7 +314,7 @@ function Home() {
     <AnimatePresence>
       {isMobileMenuOpen && (
         <motion.section
-          className="w-full h-screen fixed top-0 left-0 right-0 bottom-0 bg-white/90 backdrop-blur-[16px] z-[5000]"
+          className="w-full h-screen fixed top-0 left-0 right-0 bottom-0 bg-bg backdrop-blur-[16px] z-[5000]"
           initial={{ opacity: 0, filter: 'blur(18px)' }}
           animate={{ opacity: 1, filter: 'blur(0px)' }}
           exit={{ opacity: 0, filter: 'blur(18px)' }}
@@ -332,7 +332,7 @@ function Home() {
 
 
     <motion.nav 
-      className="w-full fixed top-0 left-0 right-0 z-[5100] flex h-fit min-h-[50px] items-center justify-center !py-[8px] !px-[16px] max-[1132px]:!px-[12px] max-[650px]:!py-[6px] bg-bg/60 backdrop-blur-[16px] border-b border-white/50"
+      className="w-full fixed top-0 left-0 right-0 z-[5100] flex h-fit min-h-[50px] items-center justify-center !py-[8px] !px-[16px] max-[1132px]:!px-[12px] max-[650px]:!py-[6px] bg-bg/70 backdrop-blur-[16px]"
       initial={{ 
         opacity: 0, 
         y: -20,
@@ -576,26 +576,36 @@ function Home() {
           </motion.p>
         </motion.div>
 
-        <motion.button 
-          className="big-button"
-          initial={{ 
-            opacity: 0, 
-            y: 20,
-            filter: "blur(20px)",
+        {/* iOS Safari: blur the wrapper (not the <button> element) to avoid the "replay/pop" glitch */}
+        <motion.div
+          variants={{
+            hidden: {
+              opacity: 0,
+              y: 20,
+              filter: 'blur(20px)',
+            },
+            visible: {
+              opacity: 1,
+              y: 0,
+              filter: 'blur(0px)',
+              transition: {
+                duration: 1.2,
+                ease: [0.16, 1, 0.3, 1],
+                delay: 0.9,
+              },
+            },
           }}
-          animate={{ 
-            opacity: 1, 
-            y: 0,
-            filter: "blur(0px)",
-          }}
-          transition={{
-            duration: 1.2,
-            ease: [0.16, 1, 0.3, 1],
-            delay: 0.9,
+          style={{
+            willChange: 'transform, opacity, filter',
+            transform: 'translateZ(0)',
+            WebkitBackfaceVisibility: 'hidden',
+            backfaceVisibility: 'hidden',
           }}
         >
-          <p className="button-text text-white">Start Marketing</p>
-        </motion.button>
+          <button className="big-button">
+            <p className="button-text text-white">Start Marketing</p>
+          </button>
+        </motion.div>
 
       </motion.section>
 
