@@ -1,6 +1,7 @@
-import { motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { DotLottieReact } from '@lottiefiles/dotlottie-react'
 
 const LOGOS = [
   { name: 'tesonet', alt: 'Tesonet' },
@@ -137,7 +138,7 @@ function InfiniteLogoCarousel({ logos, speedPxPerSec = LOGO_CAROUSEL_SPEED_PX_PE
           {logos.map((logo) => (
             <img
               key={logo.name}
-              src={`${import.meta.env.BASE_URL}logos/${logo.name}.svg`}
+              src={`${import.meta.env.BASE_URL}logos/${logo.name}.png`}
               alt={logo.alt}
               className="w-auto h-[36px] opacity-70 flex-shrink-0"
             />
@@ -149,7 +150,7 @@ function InfiniteLogoCarousel({ logos, speedPxPerSec = LOGO_CAROUSEL_SPEED_PX_PE
             {logos.map((logo) => (
               <img
                 key={`${logo.name}-repeat-${setIndex}`}
-                src={`${import.meta.env.BASE_URL}logos/${logo.name}.svg`}
+                src={`${import.meta.env.BASE_URL}logos/${logo.name}.png`}
                 alt={logo.alt}
                 className="w-auto h-[36px] opacity-70 flex-shrink-0"
               />
@@ -167,7 +168,50 @@ function InfiniteLogoCarousel({ logos, speedPxPerSec = LOGO_CAROUSEL_SPEED_PX_PE
 function Home() {
   const logos = useMemo(() => LOGOS, [])
   const [activeTab, setActiveTab] = useState('projects')
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const activeCopy = FEATURE_COPY[activeTab] ?? FEATURE_COPY.projects
+  const burgerLottieRef = useRef(null)
+  const burgerTotalFramesRef = useRef(0)
+  const burgerHalfFrameRef = useRef(0)
+  const burgerStageRef = useRef(0) // 0 = ready for first half, 1 = ready for second half
+  const burgerNeedsResetRef = useRef(false)
+  const burgerInstanceRef = useRef(null)
+  const burgerCleanupRef = useRef(null)
+
+  const BURGER_PLAYBACK_SPEED = 2
+
+  useEffect(() => {
+    if (!isMobileMenuOpen) {
+      // Re-enable Lenis + scroll
+      if (typeof window !== 'undefined' && window.lenisInstance?.start) {
+        window.lenisInstance.start()
+      }
+      document.body.style.overflow = ''
+      return
+    }
+
+    // Disable scroll while menu open
+    const prevOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+
+    // Disable Lenis if it exists (desktop / non-touch)
+    if (typeof window !== 'undefined' && window.lenisInstance?.stop) {
+      window.lenisInstance.stop()
+    }
+
+    return () => {
+      document.body.style.overflow = prevOverflow
+      if (typeof window !== 'undefined' && window.lenisInstance?.start) {
+        window.lenisInstance.start()
+      }
+    }
+  }, [isMobileMenuOpen])
+
+  useEffect(() => {
+    return () => {
+      burgerCleanupRef.current?.()
+    }
+  }, [])
 
   return (
 
@@ -177,8 +221,28 @@ function Home() {
     <div className="w-full flex flex-col items-center justify-center overflow-x-hidden !px-[16px] max-[1132px]:!px-[12px]">
 
 
+    <AnimatePresence>
+      {isMobileMenuOpen && (
+        <motion.section
+          className="w-full h-screen fixed top-0 left-0 right-0 bottom-0 bg-white/90 backdrop-blur-[16px] z-[5000]"
+          initial={{ opacity: 0, filter: 'blur(18px)' }}
+          animate={{ opacity: 1, filter: 'blur(0px)' }}
+          exit={{ opacity: 0, filter: 'blur(18px)' }}
+          transition={{ duration: 0.42, ease: [0.16, 1, 0.3, 1] }}
+        >
+          {/* mobile menu */}
+          <section className="w-full h-full flex flex-col items-center justify-center">
+            <div className="w-full h-full flex flex-col items-center justify-center">
+              <p className="text-text bigalt">Kas Skaitys Tas Gaidys</p>
+            </div>
+          </section>
+        </motion.section>
+      )}
+    </AnimatePresence>
+
+
     <motion.nav 
-      className="w-full fixed top-0 left-0 right-0 z-50 flex h-fit min-h-[52px] items-center justify-center !py-[8px] !px-[16px] max-[1132px]:!px-[12px] bg-bg/60 backdrop-blur-[16px] border-b border-white/50"
+      className="w-full fixed top-0 left-0 right-0 z-[5100] flex h-fit min-h-[50px] items-center justify-center !py-[8px] !px-[16px] max-[1132px]:!px-[12px] max-[650px]:!py-[6px] bg-bg/60 backdrop-blur-[16px] border-b border-white/50"
       initial={{ 
         opacity: 0, 
         y: -20,
@@ -199,7 +263,7 @@ function Home() {
 
         <Link to="/"><img src={`${import.meta.env.BASE_URL}branding/logo.svg`} alt="Contles" className="w-auto h-[24px]" /></Link>
 
-        <div className="flex items-center gap-[6px] justify-center max-[800px]:hidden">
+        <div className="flex items-center gap-[6px] justify-center max-[800px]:hidden right-0">
           
           <button className="alt-small-button ">
             <p className="small-button-text text-text">Log In</p>
@@ -212,14 +276,130 @@ function Home() {
 
 
 
-        <div className="flex items-center gap-[6px] justify-center">
-          <button className="small-button !py-[6px] !px-[12px] !rounded-[10px] !hidden max-[800px]:!flex">
+        <div className="flex items-center gap-[6px] justify-center !hidden max-[800px]:!flex">
+          <button className="small-button !py-[6px] !px-[12px] !rounded-[10px] ">
               <p className="small-button-text text-white !text-[15px] !tracking-[-1%]">Join Today</p>
           </button>
-          <div>
-            {/* burger menu */}
-          </div>
+          <button
+            type="button"
+            aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={isMobileMenuOpen}
+            onClick={() => {
+              const willOpen = !isMobileMenuOpen
+              setIsMobileMenuOpen(willOpen)
+
+              const player = burgerLottieRef.current
+              if (!player) return
+
+              // Try to populate frames immediately if "ready/load" already fired before listeners attached.
+              if (!burgerTotalFramesRef.current && player.totalFrames) {
+                burgerTotalFramesRef.current = player.totalFrames
+                burgerHalfFrameRef.current = Math.floor(player.totalFrames / 2)
+              }
+
+              const total = burgerTotalFramesRef.current
+              const half = burgerHalfFrameRef.current
+              // If we still don't know frames yet, just play (at least it animates).
+              if (!total || !half) {
+                player.setLoop?.(false)
+                player.setSpeed?.(BURGER_PLAYBACK_SPEED)
+                player.play?.()
+                return
+              }
+
+              player.setLoop?.(false)
+              player.setSpeed?.(BURGER_PLAYBACK_SPEED)
+
+              if (willOpen) {
+                // First click: play first half, then pause at the middle.
+                if (burgerNeedsResetRef.current) {
+                  player.stop?.()
+                  burgerNeedsResetRef.current = false
+                }
+                burgerStageRef.current = 0
+                player.setSegment?.(0, half)
+                player.setFrame?.(0)
+                player.play?.()
+              } else {
+                // Second click: continue from middle to end.
+                burgerStageRef.current = 1
+                player.setSegment?.(half, total - 1)
+                player.setFrame?.(half)
+                player.play?.()
+              }
+            }}
+            className="w-[40px] h-[40px] flex items-center justify-center bg-transparent p-0 overflow-hidden"
+          >
+            <DotLottieReact
+              src={`${import.meta.env.BASE_URL}heroicons/burger.lottie`}
+              loop={false}
+              autoplay={false}
+              dotLottieRefCallback={(dotLottie) => {
+                burgerLottieRef.current = dotLottie
+
+                // When React re-renders, this callback can fire multiple times.
+                // Only (re)attach listeners when we get a new instance.
+                if (burgerInstanceRef.current === dotLottie) return
+                burgerCleanupRef.current?.()
+                burgerInstanceRef.current = dotLottie
+                if (!dotLottie) return
+
+                const syncFrames = () => {
+                  const total = dotLottie.totalFrames ?? 0
+                  if (!total) return
+                  burgerTotalFramesRef.current = total
+                  burgerHalfFrameRef.current = Math.floor(total / 2)
+                  dotLottie.setLoop?.(false)
+                  dotLottie.setSpeed?.(BURGER_PLAYBACK_SPEED)
+                  // Ensure a known start state
+                  dotLottie.stop?.()
+                  burgerStageRef.current = 0
+                  burgerNeedsResetRef.current = false
+                }
+
+                const onComplete = () => {
+                  const total = burgerTotalFramesRef.current
+                  const half = burgerHalfFrameRef.current
+                  if (!total) return
+
+                  if (burgerStageRef.current === 0) {
+                    dotLottie.setFrame?.(half)
+                    dotLottie.pause?.()
+                    burgerStageRef.current = 1
+                  } else {
+                    dotLottie.setFrame?.(total - 1)
+                    dotLottie.pause?.()
+                    burgerStageRef.current = 0
+                    burgerNeedsResetRef.current = true
+                  }
+                }
+
+                dotLottie.addEventListener?.('load', syncFrames)
+                dotLottie.addEventListener?.('ready', syncFrames)
+                // Also attempt immediately (covers the case where events already fired)
+                syncFrames()
+                dotLottie.addEventListener?.('complete', onComplete)
+
+                burgerCleanupRef.current = () => {
+                  dotLottie.removeEventListener?.('load', syncFrames)
+                  dotLottie.removeEventListener?.('ready', syncFrames)
+                  dotLottie.removeEventListener?.('complete', onComplete)
+                }
+              }}
+              // Fill the button + visually zoom (many burger assets have padding baked in)
+              style={{
+                width: '28px',
+                height: '28px',
+              }}
+              width={28}
+              height={28}
+              // If the artwork has padding, this helps it visually fill the box
+              layout={{ fit: 'cover', align: [0.5, 0.5] }}
+            />
+          </button>
         </div>
+
+        
 
 
 
@@ -496,8 +676,13 @@ function Home() {
 
 
 
-        <div className="inline-flex flex-wrap items-center justify-center gap-[6px] !mt-[14px] bg-white border border-border rounded-[14px] !p-[6px] shadow-[-20px_207px_58px_0_rgba(0,0,0,0),_-13px_133px_53px_0_rgba(0,0,0,0.01),_-7px_75px_45px_0_rgba(0,0,0,0.03),_-3px_33px_33px_0_rgba(0,0,0,0.06),_-1px_8px_18px_0_rgba(0,0,0,0.07)] w-fit max-w-full
-          max-[555px]:flex-col max-[555px]:gap-[6px]">
+        <motion.div
+          className="inline-flex flex-wrap items-center justify-center gap-[6px] !mt-[14px] bg-white border border-border rounded-[14px] !p-[6px] shadow-[-20px_207px_58px_0_rgba(0,0,0,0),_-13px_133px_53px_0_rgba(0,0,0,0.01),_-7px_75px_45px_0_rgba(0,0,0,0.03),_-3px_33px_33px_0_rgba(0,0,0,0.06),_-1px_8px_18px_0_rgba(0,0,0,0.07)] w-fit max-w-full max-[555px]:flex-col max-[555px]:gap-[6px]"
+          initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
+          whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+          viewport={{ once: true, amount: 0.35 }}
+          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+        >
 
           <div className="flex gap-[6px] w-fit max-[555px]:w-full">
             {FEATURE_TABS.slice(0, 2).map((tab) => {
@@ -547,32 +732,50 @@ function Home() {
               )
             })}
           </div>
-        </div>
+        </motion.div>
 
      
 
-        <div className="w-full flex min-h-[128px] items-center justify-center !mt-[64px] max-[1042px]:flex-col h-fit max-[1042px]:gap-[32px]">
+        <div className="w-full flex min-h-[128px] items-center justify-center !mt-[64px] max-[1042px]:flex-col max-[1042px]:!mt-[52px] h-fit max-[1042px]:gap-[32px]">
 
-          <div className="w-full h-fit flex flex-col items-center justify-center">
+          <motion.div
+            className="w-full h-fit flex flex-col items-center justify-center"
+            initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
+            whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            viewport={{ once: true, amount: 0.35 }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          >
 
             <img src={`${import.meta.env.BASE_URL}heroicons/briefcase.svg`} alt="icon" className="w-[18px] h-[18px] mb-[6px]" />
             <p className="text-brands bentotitle">Brands</p>
 
-            <p className="!mt-[16px] text-alt alt max-[650px]:!text-[15px] text-center max-w-[400px] !leading-[150%]">{activeCopy.brands.description}</p>
+            <p className="!mt-[16px] text-alt alt max-[650px]:!text-[16px] text-center max-w-[400px] max-[650px]:max-w-[290px] !leading-[150%]">{activeCopy.brands.description}</p>
 
-          </div>
-
-
-          <div className="w-px h-[128px] bg-[#D1D1D1] shadow-[1px_0_0_0_#FFF] max-[1042px]:h-[1px] max-[1042px]:w-full max-w-[400px]" />
+          </motion.div>
 
 
-          <div className="w-full h-fit flex flex-col items-center justify-center">
+          <motion.div
+            className="w-px h-[128px] bg-[#D1D1D1] shadow-[0_1px_0_0_#FFF] max-[1042px]:h-[1px] max-[1042px]:shadow-[0_1px_0_0_#FFF] max-[1042px]:w-full max-w-[400px] max-[650px]:max-w-[300px]"
+            initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
+            whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            viewport={{ once: true, amount: 0.35 }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          />
+
+
+          <motion.div
+            className="w-full h-fit flex flex-col items-center justify-center"
+            initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
+            whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            viewport={{ once: true, amount: 0.35 }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          >
 
             <img src={`${import.meta.env.BASE_URL}heroicons/camera.svg`} alt="icon" className="w-[18px] h-[18px] mb-[6px]" />
             <p className="text-creators bentotitle">Creators</p>
 
-            <p className="!mt-[16px] text-alt alt max-[650px]:!text-[15px] text-center max-w-[400px] !leading-[150%]">{activeCopy.creators.description}</p>
-          </div>
+            <p className="!mt-[16px] text-alt alt max-[650px]:!text-[16px] text-center max-w-[400px] max-[650px]:max-w-[290px] !leading-[150%]">{activeCopy.creators.description}</p>
+          </motion.div>
 
         </div>
 
