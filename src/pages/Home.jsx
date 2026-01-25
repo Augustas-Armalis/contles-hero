@@ -14,6 +14,27 @@ const LOGOS = [
   { name: 'ism', alt: 'ISM' },
 ]
 
+// Add more files to /public/product/ and list them here in the order you want.
+const HERO_PREVIEW_IMAGES = [
+  'product/1.webp',
+  'product/2.webp',
+  'product/3.webp',
+  'product/4.webp',
+  'product/5.webp',
+  'product/6.webp',
+  'product/7.webp',
+  'product/8.webp',
+  'product/9.webp',
+  'product/10.webp',
+  'product/11.webp',
+  'product/12.webp'
+]
+
+// Preview crossfade timing
+const HERO_PREVIEW_INITIAL_DELAY_MS = 3000
+const HERO_PREVIEW_HOLD_MS = 1670
+const HERO_PREVIEW_FADE_MS = 800
+
 const LOGO_CAROUSEL_SPEED_PX_PER_SEC = 67
 
 const FEATURE_TABS = [
@@ -169,6 +190,10 @@ function Home() {
   const logos = useMemo(() => LOGOS, [])
   const [activeTab, setActiveTab] = useState('projects')
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [heroPreviewBaseIndex, setHeroPreviewBaseIndex] = useState(0)
+  const [heroPreviewOverlayIndex, setHeroPreviewOverlayIndex] = useState(null)
+  const heroPreviewHasStartedRef = useRef(false)
+  const heroPreviewQueueRef = useRef([])
   const activeCopy = FEATURE_COPY[activeTab] ?? FEATURE_COPY.projects
   const burgerLottieRef = useRef(null)
   const burgerTotalFramesRef = useRef(0)
@@ -212,6 +237,70 @@ function Home() {
       burgerCleanupRef.current?.()
     }
   }, [])
+
+  useEffect(() => {
+    const len = HERO_PREVIEW_IMAGES.length
+    if (len <= 1) return
+
+    let holdTimer = 0
+    let swapTimer = 0
+    let cancelled = false
+
+    const shuffle = (arr) => {
+      const a = [...arr]
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1))
+        ;[a[i], a[j]] = [a[j], a[i]]
+      }
+      return a
+    }
+
+    const getNextIndex = () => {
+      // Special "hero" image is always index 0.
+      if (heroPreviewBaseIndex === 0) {
+        // Ensure we have a fresh shuffled queue of the remaining images.
+        if (heroPreviewQueueRef.current.length === 0) {
+          heroPreviewQueueRef.current = shuffle(
+            Array.from({ length: len }, (_, i) => i).slice(1)
+          )
+        }
+        return heroPreviewQueueRef.current.shift()
+      }
+
+      // While cycling non-special images, keep using the queue.
+      if (heroPreviewQueueRef.current.length > 0) {
+        return heroPreviewQueueRef.current.shift()
+      }
+
+      // Once all non-special images were shown, return to the special one.
+      return 0
+    }
+
+    const holdMs = heroPreviewHasStartedRef.current
+      ? HERO_PREVIEW_HOLD_MS
+      : HERO_PREVIEW_INITIAL_DELAY_MS
+
+    holdTimer = window.setTimeout(() => {
+      if (cancelled) return
+      heroPreviewHasStartedRef.current = true
+      const next = getNextIndex()
+      // Fade next image on top, keep base underneath.
+      setHeroPreviewOverlayIndex(next)
+
+      swapTimer = window.setTimeout(() => {
+        if (cancelled) return
+        // Once faded in, promote overlay to base and clear overlay.
+        setHeroPreviewBaseIndex(next)
+        setHeroPreviewOverlayIndex(null)
+      }, HERO_PREVIEW_FADE_MS)
+    }, holdMs)
+
+    return () => {
+      cancelled = true
+      window.clearTimeout(holdTimer)
+      window.clearTimeout(swapTimer)
+    }
+  }, [heroPreviewBaseIndex])
 
   return (
 
@@ -666,7 +755,28 @@ function Home() {
 
         <div className="w-fit h-fit flex absolute top-[58px] left-[58px] right-[58px] max-[690px]:left-[18px] max-[690px]:right-[18px] max-[690px]:top-[18px] max-[1132px]:left-[48px] max-[1132px]:right-[48px] max-[1132px]:top-[42px]  items-center justify-center !p-[6px] max-[690px]:!p-[4px] backdrop-blur-[28px] border border-white/20 bg-white/24 shadow-[inset_0_0_8.1px_0_rgba(255,255,255,0.14)] rounded-[17px] max-[690px]:rounded-[12px]">
         
-          <img src={`${import.meta.env.BASE_URL}product/projects.png`} alt="img" className="w-full h-auto object-cover rounded-[12px] max-[690px]:rounded-[8px]" />
+          <div className="w-full grid">
+            {/* Base image (stays until the next one fully fades in) */}
+            <img
+              src={`${import.meta.env.BASE_URL}${HERO_PREVIEW_IMAGES[heroPreviewBaseIndex]}`}
+              alt="Product preview"
+              className="w-full h-auto object-cover rounded-[12px] max-[690px]:rounded-[8px] col-start-1 row-start-1"
+            />
+
+            {/* Overlay image (fades in on top, then gets promoted to base) */}
+            {heroPreviewOverlayIndex !== null && (
+              <motion.img
+                key={HERO_PREVIEW_IMAGES[heroPreviewOverlayIndex]}
+                src={`${import.meta.env.BASE_URL}${HERO_PREVIEW_IMAGES[heroPreviewOverlayIndex]}`}
+                alt=""
+                aria-hidden="true"
+                className="w-full h-auto object-cover rounded-[12px] max-[690px]:rounded-[8px] col-start-1 row-start-1"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: HERO_PREVIEW_FADE_MS / 1000, ease: [0.16, 1, 0.3, 1] }}
+              />
+            )}
+          </div>
 
 
         </div>
