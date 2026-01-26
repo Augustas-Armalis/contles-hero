@@ -1207,7 +1207,7 @@ function Home() {
             Common Questions
             <p className="alt text-alt normal-case max-w-[560px] !pt-[14px]">
               If you have more - write to us{' '}
-              <span className="text-text  lowercase">hello@contles.co</span>
+              <span className="text-text  lowercase">hello@contles.com</span>
             </p>
           </motion.p>
             
