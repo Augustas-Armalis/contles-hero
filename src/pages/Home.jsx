@@ -876,30 +876,62 @@ function Home() {
 
 
 
-        <section className="w-full flex flex-col items-center justify-center !mt-[100px]">
+        <section className="w-full flex flex-col items-center justify-center !mt-[192px] max-[650px]:!mt-[142px]">
 
-          <p className="title !mb-[52px] w-fit text-center">Buy results, not promises</p>
+          <motion.p
+            className="title !mb-[52px] w-fit text-center"
+            initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
+            whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            viewport={{ once: true, amount: 0.35 }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          >
+            Buy results, not promises
+          </motion.p>
 
           <div className="w-full flex flex-wrap items-center justify-center gap-[10px]">
 
-            <div className=" w-full h-full max-w-[360px] max-h-[330px] aspect-[360/330] bg-white rounded-[14px] border border-border relative overflow-hidden">
+            <motion.div
+              className=" w-full h-full max-w-[360px] max-h-[330px] aspect-[360/330] bg-white rounded-[14px] border border-border relative overflow-hidden"
+              initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
+              whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              viewport={{ once: true, amount: 0.35 }}
+              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <img className="absolute w-full h-auto object-cover top-0 left-0" src={`${import.meta.env.BASE_URL}bento/first.webp`}></img>
+              <div className="absolute left-[16px] bottom-[16px] flex flex-col items-start justify-center gap-[8px]">
+                <p className="bentotitle text-text">Define success</p>
+                <p className="alt text-alt max-w-[220px] !leading-[140%]">Set clear goals, milestones, and KPIs. All in one place</p>
+              </div>
+            </motion.div>
 
-            <img className="absolute w-full h-auto object-cover top-0 left-0" src={`${import.meta.env.BASE_URL}bento/firstbento.svg`}></img>
-            
-            <div className="absolute left-[16px] bottom-[16px] flex flex-col items-start justify-center gap-[8px]">
-              <p className="bentotitle text-text">Define success</p>
-              <p className="alt text-alt max-w-[220px] !leading-[140%]">Set clear goals, milestones, and KPIs. All in one place.</p>
+            <motion.div
+              className=" w-full h-full max-w-[360px] max-h-[330px] aspect-[360/330] bg-white rounded-[14px] border border-border relative overflow-hidden"
+              initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
+              whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              viewport={{ once: true, amount: 0.35 }}
+              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <img className="absolute w-full h-auto object-cover top-0 left-0" src={`${import.meta.env.BASE_URL}bento/second.webp`}></img>
+              <div className="absolute left-[16px] bottom-[16px] flex flex-col items-start justify-center gap-[8px]">
+                <p className="bentotitle text-text">Creators execute</p>
+                <p className="alt text-alt max-w-[240px] !leading-[140%]">Verified creators join and deliver based on the agreed terms</p>
+              </div>
+            </motion.div>
 
-            </div>
+            <motion.div
+              className=" w-full h-full max-w-[360px] max-h-[330px] aspect-[360/330] bg-white rounded-[14px] border border-border relative overflow-hidden"
+              initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
+              whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              viewport={{ once: true, amount: 0.35 }}
+              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <img className="absolute w-full h-auto object-cover top-0 left-0" src={`${import.meta.env.BASE_URL}bento/third.webp`}></img>
+              <div className="absolute left-[16px] bottom-[16px] flex flex-col items-start justify-center gap-[8px]">
+                <p className="bentotitle text-text">Pay when it works</p>
+                <p className="alt text-alt max-w-[220px] !leading-[140%]">Funds are released only when the defined results are met</p>
+              </div>
+            </motion.div>
 
-
-
-            </div>
-
-
-
-            <div className=" w-full h-full max-w-[360px] max-h-[330px] aspect-[360/330] bg-white rounded-[14px] border border-border"></div>
-            <div className=" w-full h-full max-w-[360px] max-h-[330px] aspect-[360/330] bg-white rounded-[14px] border border-border"></div>
 
             
 
