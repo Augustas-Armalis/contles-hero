@@ -15,7 +15,6 @@ const LOGOS = [
   { name: 'ism', alt: 'ISM' },
 ]
 
-// Add more files to /public/product/ and list them here in the order you want.
 const HERO_PREVIEW_IMAGES = [
   'product/1.webp',
   'product/2.webp',
@@ -31,10 +30,9 @@ const HERO_PREVIEW_IMAGES = [
   'product/12.webp'
 ]
 
-// Preview crossfade timing
 const HERO_PREVIEW_INITIAL_DELAY_MS = 3000
-const HERO_PREVIEW_HOLD_MS = 1670
-const HERO_PREVIEW_FADE_MS = 800
+const HERO_PREVIEW_HOLD_MS = 1000
+const HERO_PREVIEW_FADE_MS = 500
 
 const LOGO_CAROUSEL_SPEED_PX_PER_SEC = 67
 
@@ -45,7 +43,6 @@ const FEATURE_TABS = [
   { id: 'payments', label: 'Payments', icon: 'wallet.svg' },
 ]
 
-// Copy per selected tab (edit these strings).
 const FEATURE_COPY = {
   projects: {
     brands: {
@@ -199,7 +196,7 @@ function Home() {
   const burgerLottieRef = useRef(null)
   const burgerTotalFramesRef = useRef(0)
   const burgerHalfFrameRef = useRef(0)
-  const burgerStageRef = useRef(0) // 0 = ready for first half, 1 = ready for second half
+  const burgerStageRef = useRef(0)
   const burgerNeedsResetRef = useRef(false)
   const burgerInstanceRef = useRef(null)
   const burgerCleanupRef = useRef(null)
@@ -208,7 +205,6 @@ function Home() {
 
   useEffect(() => {
     if (!isMobileMenuOpen) {
-      // Re-enable Lenis + scroll
       if (typeof window !== 'undefined' && window.lenisInstance?.start) {
         window.lenisInstance.start()
       }
@@ -216,11 +212,9 @@ function Home() {
       return
     }
 
-    // Disable scroll while menu open
     const prevOverflow = document.body.style.overflow
     document.body.style.overflow = 'hidden'
 
-    // Disable Lenis if it exists (desktop / non-touch)
     if (typeof window !== 'undefined' && window.lenisInstance?.stop) {
       window.lenisInstance.stop()
     }
@@ -257,9 +251,9 @@ function Home() {
     }
 
     const getNextIndex = () => {
-      // Special "hero" image is always index 0.
+
       if (heroPreviewBaseIndex === 0) {
-        // Ensure we have a fresh shuffled queue of the remaining images.
+
         if (heroPreviewQueueRef.current.length === 0) {
           heroPreviewQueueRef.current = shuffle(
             Array.from({ length: len }, (_, i) => i).slice(1)
@@ -268,12 +262,10 @@ function Home() {
         return heroPreviewQueueRef.current.shift()
       }
 
-      // While cycling non-special images, keep using the queue.
       if (heroPreviewQueueRef.current.length > 0) {
         return heroPreviewQueueRef.current.shift()
       }
 
-      // Once all non-special images were shown, return to the special one.
       return 0
     }
 
@@ -285,12 +277,10 @@ function Home() {
       if (cancelled) return
       heroPreviewHasStartedRef.current = true
       const next = getNextIndex()
-      // Fade next image on top, keep base underneath.
       setHeroPreviewOverlayIndex(next)
 
       swapTimer = window.setTimeout(() => {
         if (cancelled) return
-        // Once faded in, promote overlay to base and clear overlay.
         setHeroPreviewBaseIndex(next)
         setHeroPreviewOverlayIndex(null)
       }, HERO_PREVIEW_FADE_MS)
@@ -314,14 +304,13 @@ function Home() {
     <AnimatePresence>
       {isMobileMenuOpen && (
         <motion.section
-          className="w-full h-screen fixed top-0 left-0 right-0 bottom-0 bg-bg backdrop-blur-[16px] z-[5000]"
+          className="w-full h-[200vh] fixed top-0 left-0 right-0 bottom-0 bg-bg backdrop-blur-[16px] z-[5000]"
           initial={{ opacity: 0, filter: 'blur(18px)' }}
           animate={{ opacity: 1, filter: 'blur(0px)' }}
           exit={{ opacity: 0, filter: 'blur(18px)' }}
           transition={{ duration: 0.42, ease: [0.16, 1, 0.3, 1] }}
         >
-          {/* mobile menu */}
-          <section className="w-full h-full flex flex-col items-center justify-center">
+          <section className="w-full h-screen absolute top-0 left-0 right-0 bottom-0 flex flex-col items-center justify-center">
             <div className="w-full h-full flex flex-col items-center justify-center">
               <p className="text-text bigalt">Kas Skaitys Tas Gaidys</p>
             </div>
@@ -381,7 +370,6 @@ function Home() {
               const player = burgerLottieRef.current
               if (!player) return
 
-              // Try to populate frames immediately if "ready/load" already fired before listeners attached.
               if (!burgerTotalFramesRef.current && player.totalFrames) {
                 burgerTotalFramesRef.current = player.totalFrames
                 burgerHalfFrameRef.current = Math.floor(player.totalFrames / 2)
@@ -389,7 +377,6 @@ function Home() {
 
               const total = burgerTotalFramesRef.current
               const half = burgerHalfFrameRef.current
-              // If we still don't know frames yet, just play (at least it animates).
               if (!total || !half) {
                 player.setLoop?.(false)
                 player.setSpeed?.(BURGER_PLAYBACK_SPEED)
@@ -401,7 +388,6 @@ function Home() {
               player.setSpeed?.(BURGER_PLAYBACK_SPEED)
 
               if (willOpen) {
-                // First click: play first half, then pause at the middle.
                 if (burgerNeedsResetRef.current) {
                   player.stop?.()
                   burgerNeedsResetRef.current = false
@@ -411,7 +397,6 @@ function Home() {
                 player.setFrame?.(0)
                 player.play?.()
               } else {
-                // Second click: continue from middle to end.
                 burgerStageRef.current = 1
                 player.setSegment?.(half, total - 1)
                 player.setFrame?.(half)
@@ -427,8 +412,6 @@ function Home() {
               dotLottieRefCallback={(dotLottie) => {
                 burgerLottieRef.current = dotLottie
 
-                // When React re-renders, this callback can fire multiple times.
-                // Only (re)attach listeners when we get a new instance.
                 if (burgerInstanceRef.current === dotLottie) return
                 burgerCleanupRef.current?.()
                 burgerInstanceRef.current = dotLottie
@@ -441,7 +424,6 @@ function Home() {
                   burgerHalfFrameRef.current = Math.floor(total / 2)
                   dotLottie.setLoop?.(false)
                   dotLottie.setSpeed?.(BURGER_PLAYBACK_SPEED)
-                  // Ensure a known start state
                   dotLottie.stop?.()
                   burgerStageRef.current = 0
                   burgerNeedsResetRef.current = false
@@ -466,7 +448,6 @@ function Home() {
 
                 dotLottie.addEventListener?.('load', syncFrames)
                 dotLottie.addEventListener?.('ready', syncFrames)
-                // Also attempt immediately (covers the case where events already fired)
                 syncFrames()
                 dotLottie.addEventListener?.('complete', onComplete)
 
@@ -476,14 +457,12 @@ function Home() {
                   dotLottie.removeEventListener?.('complete', onComplete)
                 }
               }}
-              // Fill the button + visually zoom (many burger assets have padding baked in)
               style={{
                 width: '28px',
                 height: '28px',
               }}
               width={28}
               height={28}
-              // If the artwork has padding, this helps it visually fill the box
               layout={{ fit: 'cover', align: [0.5, 0.5] }}
             />
           </button>
@@ -576,7 +555,6 @@ function Home() {
           </motion.p>
         </motion.div>
 
-        {/* iOS Safari: blur the wrapper (not the <button> element) to avoid the "replay/pop" glitch */}
         <motion.div
           variants={{
             hidden: {
@@ -610,7 +588,6 @@ function Home() {
       </motion.section>
 
 
-      {/* Desktop version - hidden below 1132px */}
       <div className="w-full flex items-center justify-center !mt-[100px] gap-[32px] max-[1132px]:hidden">
 
         <motion.p 
@@ -693,7 +670,6 @@ function Home() {
 
       </div>
 
-      {/* Mobile carousel version - visible below 1132px */}
       <div className="w-full !mt-[100px] min-[1132px]:hidden max-[650px]:!mt-[80px]">
 
       <motion.p 
@@ -767,14 +743,12 @@ function Home() {
         <div className="w-fit h-fit flex absolute top-[58px] left-[58px] right-[58px] max-[690px]:left-[18px] max-[690px]:right-[18px] max-[690px]:top-[18px] max-[1132px]:left-[48px] max-[1132px]:right-[48px] max-[1132px]:top-[42px]  items-center justify-center !p-[6px] max-[690px]:!p-[4px] backdrop-blur-[28px] border border-white/20 bg-white/24 shadow-[inset_0_0_8.1px_0_rgba(255,255,255,0.14)] rounded-[17px] max-[690px]:rounded-[12px]">
         
           <div className="w-full grid">
-            {/* Base image (stays until the next one fully fades in) */}
             <img
               src={`${import.meta.env.BASE_URL}${HERO_PREVIEW_IMAGES[heroPreviewBaseIndex]}`}
               alt="Product preview"
               className="w-full h-auto object-cover rounded-[12px] max-[690px]:rounded-[8px] col-start-1 row-start-1"
             />
 
-            {/* Overlay image (fades in on top, then gets promoted to base) */}
             {heroPreviewOverlayIndex !== null && (
               <motion.img
                 key={HERO_PREVIEW_IMAGES[heroPreviewOverlayIndex]}
@@ -899,6 +873,41 @@ function Home() {
           </motion.div>
 
         </div>
+
+
+
+        <section className="w-full flex flex-col items-center justify-center !mt-[100px]">
+
+          <p className="title !mb-[52px] w-fit text-center">Buy results, not promises</p>
+
+          <div className="w-full flex flex-wrap items-center justify-center gap-[10px]">
+
+            <div className=" w-full h-full max-w-[360px] max-h-[330px] aspect-[360/330] bg-white rounded-[14px] border border-border relative overflow-hidden">
+
+            <img className="absolute w-full h-auto object-cover top-0 left-0" src={`${import.meta.env.BASE_URL}bento/firstbento.svg`}></img>
+            
+            <div className="absolute left-[16px] bottom-[16px] flex flex-col items-start justify-center gap-[8px]">
+              <p className="bentotitle text-text">Define success</p>
+              <p className="alt text-alt max-w-[220px] !leading-[140%]">Set clear goals, milestones, and KPIs. All in one place.</p>
+
+            </div>
+
+
+
+            </div>
+
+
+
+            <div className=" w-full h-full max-w-[360px] max-h-[330px] aspect-[360/330] bg-white rounded-[14px] border border-border"></div>
+            <div className=" w-full h-full max-w-[360px] max-h-[330px] aspect-[360/330] bg-white rounded-[14px] border border-border"></div>
+
+            
+
+          </div>
+
+
+
+        </section>
 
 
 

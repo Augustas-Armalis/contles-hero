@@ -205,6 +205,24 @@ video {
 
 /* Text */
 
+.title{
+	font-family: Inter;
+	font-size: 42px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: normal;
+	letter-spacing: -2.52px;
+	text-transform: capitalize;
+}
+
+@media (max-width: 650px) {
+	.title {
+		font-size: 32px;
+		letter-spacing: -2.2px;
+	}
+}
+
+
 .smalalt{
 text-align: center;
 font-family: Inter;
@@ -227,7 +245,7 @@ letter-spacing: -0.42px;
 
 @media (max-width: 650px) {
 	.alt {
-		font-size: 14px;
+		font-size: 15px;
 	}
 }
 
