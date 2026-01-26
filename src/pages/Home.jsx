@@ -399,7 +399,7 @@ function Home() {
 
 
 
-    
+
     <div className="w-full flex flex-col items-center justify-center overflow-x-hidden !pb-[24px]">
 
 
@@ -1230,7 +1230,7 @@ function Home() {
                       aria-expanded={isOpen}
                     >
                       <p
-                        className="alt !text-text !text-[18px] max-[460px]:!text-[16px] !leading-[150%] text-left group-hover:underline underline-offset-[3px] bigalt !text-start"
+                        className="alt !text-text !text-[18px] max-[460px]:!text-[16px] !leading-[150%] text-left group-hover:underline underline-offset-[3px] alt !text-start"
                       >
                         {faqLoading ? 'Loading…' : item.question}
                       </p>
@@ -1326,7 +1326,7 @@ function Home() {
 <div className="w-full flex items-center justify-center flex-col z-20 !mt-[36px] max-[652px]:!mt-[42px] !px-[32px]">
   <div className="w-[78px] h-[78px] flex items-center justify-center shadow-[0_10px_22.5px_-3px_rgba(0,0,0,0.25),10px_-4px_7px_-8px_rgba(191,76,163,0.25)_inset,0_-13px_7px_-8px_rgba(191,76,163,0.25)_inset,-10px_-4px_7px_-8px_rgba(191,76,163,0.25)_inset] bg-white rounded-[19px]">
 
-    <img src="/branding/icon.svg" alt="icon" className="w-[40px] h-[40px]" />
+    <img src={`${import.meta.env.BASE_URL}branding/icon.svg`} alt="icon" className="w-[40px] h-[40px]" />
 
 
   </div>
@@ -1356,7 +1356,7 @@ function Home() {
           }}
         >
           <img
-            src="/product/smallis.png"
+            src={`${import.meta.env.BASE_URL}product/smallis.png`}
             alt="Product preview"
             className="w-full h-auto object-cover rounded-[12px] rounded-b-[0px] max-[690px]:rounded-[8px] col-start-1 row-start-1"
           />
@@ -1398,11 +1398,11 @@ function Home() {
           className="flex items-center justify-center gap-[10px] w-fit">
         <p className="alt text-alt opacity-70">Follow us on</p>
         <div className="flex items-center justify-center gap-[6px] w-fit">
-          <Link to="https://example.com" target="_blank" className="hover:opacity-80 transition-ease-out duration-200"><img src="/heroicons/color-instagram.png" alt="X" className="w-[24px] h-[24px]" /></Link>
-          <Link to="https://example.com" target="_blank" className="hover:opacity-80 transition-ease-out duration-200"><img src="/heroicons/color-tiktok.png" alt="X" className="w-[24px] h-[24px]" /></Link>
-          <Link to="https://example.com" target="_blank" className="hover:opacity-80 transition-ease-out duration-200"><img src="/heroicons/color-linkedin.png" alt="X" className="w-[24px] h-[24px]" /></Link>
-          <Link to="https://example.com" target="_blank" className="hover:opacity-80 transition-ease-out duration-200"><img src="/heroicons/color-twitter.png" alt="X" className="w-[24px] h-[24px]" /></Link>
-          <Link to="https://example.com" target="_blank" className="hover:opacity-80 transition-ease-out duration-200"><img src="/heroicons/color-facebook.png" alt="X" className="w-[24px] h-[24px]" /></Link>
+          <Link to="https://example.com" target="_blank" className="hover:opacity-80 transition-ease-out duration-200"><img src={`${import.meta.env.BASE_URL}heroicons/color-instagram.png`} alt="Instagram" className="w-[24px] h-[24px]" /></Link>
+          <Link to="https://example.com" target="_blank" className="hover:opacity-80 transition-ease-out duration-200"><img src={`${import.meta.env.BASE_URL}heroicons/color-tiktok.png`} alt="TikTok" className="w-[24px] h-[24px]" /></Link>
+          <Link to="https://example.com" target="_blank" className="hover:opacity-80 transition-ease-out duration-200"><img src={`${import.meta.env.BASE_URL}heroicons/color-linkedin.png`} alt="LinkedIn" className="w-[24px] h-[24px]" /></Link>
+          <Link to="https://example.com" target="_blank" className="hover:opacity-80 transition-ease-out duration-200"><img src={`${import.meta.env.BASE_URL}heroicons/color-twitter.png`} alt="X" className="w-[24px] h-[24px]" /></Link>
+          <Link to="https://example.com" target="_blank" className="hover:opacity-80 transition-ease-out duration-200"><img src={`${import.meta.env.BASE_URL}heroicons/color-facebook.png`} alt="Facebook" className="w-[24px] h-[24px]" /></Link>
         </div>
         </motion.div>
           
