@@ -400,7 +400,7 @@ function Home() {
 
 
 
-    <div className="w-full flex flex-col items-center justify-center overflow-x-hidden !pb-[24px]">
+    <div className="w-full flex flex-col items-center justify-center overflow-x-hidden !pb-[32px]">
 
 
     <AnimatePresence>
@@ -1088,7 +1088,7 @@ function Home() {
 
               <div className="absolute left-[16px] top-[16px] flex flex-col items-start justify-center gap-[8px]">
                 <p className="bentotitle text-white">Free discovery</p>
-                <p className="alt text-alt !leading-[140%] max-[1138px]:!max-w-[230px]">Explore creators, campaigns and brands without paywalls</p>
+                <p className="alt text-alt !leading-[140%] max-[1138px]:!max-w-[220px]">Explore creators, campaigns and brands without paywalls</p>
               </div>
             </motion.div>
 
@@ -1142,7 +1142,7 @@ function Home() {
 
               <div className="absolute left-[16px] top-[16px] flex flex-col items-start justify-center gap-[8px]">
                 <p className="bentotitle text-white">Work directly</p>
-                <p className="alt text-alt !leading-[140%] max-[1138px]:!max-w-[230px]">Manage creator work, files, send products in one place</p>
+                <p className="alt text-alt !leading-[140%] max-[1138px]:!max-w-[220px]">Manage creator work, files, send products in one place</p>
               </div>
             </motion.div>
             
