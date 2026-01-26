@@ -31,8 +31,8 @@ const HERO_PREVIEW_IMAGES = [
 ]
 
 const HERO_PREVIEW_INITIAL_DELAY_MS = 3000
-const HERO_PREVIEW_HOLD_MS = 1000
-const HERO_PREVIEW_FADE_MS = 500
+const HERO_PREVIEW_HOLD_MS = 700
+const HERO_PREVIEW_FADE_MS = 700
 
 const LOGO_CAROUSEL_SPEED_PX_PER_SEC = 67
 
@@ -85,6 +85,20 @@ const FEATURE_COPY = {
     },
   },
 }
+
+const COMPARISON_ROW_LABELS = [
+  'Buy real results',
+  'Clear goals upfront',
+  'Verified creators & brands',
+  'Performance tracking',
+  'Secure payments',
+  'Direct collaboration',
+  'On-platform chat',
+  'UGC & product send',
+  'Campaigns & direct work',
+  'Creator & brand search',
+  'Scales without overhaed',
+]
 
 function InfiniteLogoCarousel({ logos, speedPxPerSec = LOGO_CAROUSEL_SPEED_PX_PER_SEC }) {
   const containerRef = useRef(null)
@@ -202,6 +216,90 @@ function Home() {
   const burgerCleanupRef = useRef(null)
 
   const BURGER_PLAYBACK_SPEED = 2
+  const FAQ_EASE = [0.16, 1, 0.3, 1]
+
+  const [faqLoading, setFaqLoading] = useState(true)
+  const [faqItems, setFaqItems] = useState([])
+  const [openIndex, setOpenIndex] = useState(null)
+
+  useEffect(() => {
+    async function loadFaq() {
+      setFaqLoading(true)
+
+      const fallbackFaq = [
+        {
+          id: 'small-or-big',
+          question: 'Is Contles for small brands or only big companies?',
+          answer:
+            'Contles is built for brands of all sizes that want to work with creators without agencies, chaos, or unnecessary risk, and manage everything in one place.',
+        },
+        {
+          id: 'budget',
+          question: 'Do I need a big budget to use Contles?',
+          answer:
+            'No. You control the budget. You can work with individual creators or run campaigns at any scale.',
+        },
+        {
+          id: 'followers',
+          question: 'Is this only for influencers with lots of followers?',
+          answer:
+            'No. Contles supports UGC creators, influencers, and mixed creators, where quality of work matters more than follower count. We encourage new creators to start their career here!',
+        },
+        {
+          id: 'dms',
+          question: 'How is this safer than working through DMs?',
+          answer:
+            'Everything happens in one place - communication, files, product sending, and payments. Payments are handled through Contles, keeping collaborations structured and protected.',
+        },
+        {
+          id: 'disappears',
+          question: 'What happens if someone doesn’t deliver or disappears?',
+          answer:
+            'Clear requirements are set upfront. If the work isn’t delivered as agreed, payments are not released.',
+        },
+        {
+          id: 'direct',
+          question: 'Can I work with creators directly, not only through campaigns?',
+          answer:
+            'Yes. You can collaborate 1:1 with creators or run campaigns. Both are supported.',
+        },
+        {
+          id: 'products',
+          question: 'Can brands send products and get UGC safely?',
+          answer:
+            'Yes. Product sending and UGC delivery are managed inside Contles, with tracking and confirmation on both sides.',
+        },
+        {
+          id: 'upfront',
+          question: 'Do creators get paid upfront?',
+          answer:
+            'Yes. For direct projects, brands pay upfront. Payments are handled securely through Contles so both sides are protected.',
+        },
+        {
+          id: 'long-term',
+          question: 'Is Contles good for long-term creator work?',
+          answer:
+            'Yes. You can easily manage one-off projects or ongoing collaborations with multiple creators.',
+        },
+        {
+          id: 'browse',
+          question: 'Do I need to pay just to browse creators or brands?',
+          answer:
+            'No. Discovery is free. You only pay when actual work starts.',
+        },
+      ]
+
+      try {
+        // No backend hooked up yet — use fallback.
+        setFaqItems(fallbackFaq)
+      } finally {
+        // Small delay so the loading state can be seen (optional).
+        window.setTimeout(() => setFaqLoading(false), 150)
+      }
+    }
+
+    loadFaq()
+  }, [])
 
   useEffect(() => {
     if (!isMobileMenuOpen) {
@@ -298,7 +396,7 @@ function Home() {
 
 
 
-    <div className="w-full flex flex-col items-center justify-center overflow-x-hidden !px-[16px] max-[1132px]:!px-[12px]">
+    <div className="w-full flex flex-col items-center justify-center overflow-x-hidden !pb-[24px]">
 
 
     <AnimatePresence>
@@ -321,7 +419,7 @@ function Home() {
 
 
     <motion.nav 
-      className="w-full fixed top-0 left-0 right-0 z-[5100] flex h-fit min-h-[50px] items-center justify-center !py-[8px] !px-[16px] max-[1132px]:!px-[12px] max-[650px]:!py-[6px] bg-bg/70 backdrop-blur-[16px]"
+      className="w-full fixed top-0 left-0 right-0 z-[5100] flex h-fit min-h-[50px] items-center justify-center !py-[8px] !px-[16px] max-[1132px]:!px-[12px] max-[650px]:!py-[6px] bg-bg/80 backdrop-blur-[16px]"
       initial={{ 
         opacity: 0, 
         y: -20,
@@ -483,7 +581,7 @@ function Home() {
     </motion.nav>
 
 
-    <section className="w-full flex flex-col items-center justify-center max-w-[1100px] mx-auto">
+    <section className="w-full flex flex-col items-center justify-center max-w-[1136px] !px-[16px] max-[1132px]:!px-[12px]">
 
       <motion.section 
         className="hero-section w-full flex justify-center items-center flex-col pt-[142px]! gap-[42px] max-[650px]:pt-[128px]! max-[650px]:gap-[32px]"
@@ -946,14 +1044,381 @@ function Home() {
 
 
 
-
     </section>
 
 
 
-    <div className="h-[300vh]">
 
-    </div>
+
+      <section className="w-full flex flex-col items-center justify-center !mt-[192px] bg-black !pb-[164px] !pt-[128px] max-[760px]:!mt-[124px] max-[760px]:!pt-[84px] max-[760px]:!pb-[124px]">
+
+        <section className="w-full flex flex-col items-center justify-center max-w-[1136px] !px-[16px] max-[1132px]:!px-[12px] gap-[10px]">
+
+
+          <motion.p
+            className="title !mb-[52px] w-fit text-center !text-white"
+            initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
+            whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            viewport={{ once: true, amount: 0.35 }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            >
+            How Contles works
+            </motion.p>
+
+
+
+
+            <div className="w-full flex flex-wrap items-center justify-center gap-[10px]">
+
+            <motion.div
+              className=" w-full h-full max-w-[656px] max-h-[330px] aspect-[656/330] max-[1056px]:!aspect-[360/330] max-[1138px]:!aspect-[434/330] max-[1138px]:max-w-[434px] max-[1056px]:max-w-[360px] bg-[#0F0F0F] rounded-[14px] border border-[#1B1B1B] relative overflow-hidden"
+              initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
+              whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              viewport={{ once: true, amount: 0.35 }}
+              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <img className="absolute w-full h-auto object-cover top-0 left-0 max-[1138px]:hidden" src={`${import.meta.env.BASE_URL}bento/fourth.webp`}></img>
+              <img className="absolute w-full h-auto object-cover top-0 left-0 hidden max-[1138px]:flex max-[1056px]:hidden" src={`${import.meta.env.BASE_URL}bento/fourthmedium.webp`}></img>
+              <img className="absolute w-full h-auto object-cover top-0 left-0 hidden max-[1056px]:flex" src={`${import.meta.env.BASE_URL}bento/fourthsmall.webp`}></img>
+
+
+              <div className="absolute left-[16px] top-[16px] flex flex-col items-start justify-center gap-[8px]">
+                <p className="bentotitle text-white">Free discovery</p>
+                <p className="alt text-alt !leading-[140%] max-[1138px]:!max-w-[230px]">Explore creators, campaigns and brands without paywalls</p>
+              </div>
+            </motion.div>
+
+            <motion.div
+              className=" w-full h-full max-w-[434px] max-h-[330px] aspect-[434/330] max-[1056px]:!aspect-[360/330] max-[1056px]:max-w-[360px]  bg-[#0F0F0F] rounded-[14px] border border-[#1B1B1B] relative overflow-hidden"
+              initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
+              whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              viewport={{ once: true, amount: 0.35 }}
+              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <img className="absolute w-full h-auto object-cover top-0 left-0 max-[1056px]:hidden" src={`${import.meta.env.BASE_URL}bento/fifth.webp`}></img>
+              <img className="absolute w-full h-auto object-cover top-0 left-0 hidden max-[1056px]:flex" src={`${import.meta.env.BASE_URL}bento/fifthsmall.webp`}></img>
+              <div className="absolute left-[16px] top-[16px] flex flex-col items-start justify-center gap-[8px]">
+                <p className="bentotitle text-white">Verified creators</p>
+                <p className="alt text-alt !leading-[140%]">Real portfolios, work history, and ratings</p>
+              </div>
+            </motion.div>
+            
+
+          </div>
+
+
+          <div className="w-full flex flex-wrap items-center justify-center gap-[10px]">
+
+            <motion.div
+              className=" w-full h-full max-w-[434px] max-h-[330px] aspect-[434/330] max-[1056px]:!aspect-[360/330] max-[1056px]:max-w-[360px] bg-[#0F0F0F] rounded-[14px] border border-[#1B1B1B] relative overflow-hidden"
+              initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
+              whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              viewport={{ once: true, amount: 0.35 }}
+              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <img className="absolute w-full h-auto object-cover top-0 left-0 max-[1056px]:hidden" src={`${import.meta.env.BASE_URL}bento/sixth.webp`}></img>
+              <img className="absolute w-full h-auto object-cover top-0 left-0 hidden max-[1056px]:flex" src={`${import.meta.env.BASE_URL}bento/sixthsmall.webp`}></img>
+              <div className="absolute left-[16px] top-[16px] flex flex-col items-start justify-center gap-[8px]">
+                <p className="bentotitle text-white">Secure payments</p>
+                <p className="alt text-alt !leading-[140%]">Handled inside the platform, not DMs</p>
+              </div>
+            </motion.div>
+
+
+            <motion.div
+              className=" w-full h-full max-w-[656px] max-h-[330px] aspect-[656/330] max-[1056px]:!aspect-[360/330] max-[1138px]:!aspect-[434/330] max-[1138px]:max-w-[434px] max-[1056px]:max-w-[360px] bg-[#0F0F0F] rounded-[14px] border border-[#1B1B1B] relative overflow-hidden"
+              initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
+              whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              viewport={{ once: true, amount: 0.35 }}
+              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <img className="absolute w-full h-auto object-cover top-0 left-0 max-[1138px]:hidden" src={`${import.meta.env.BASE_URL}bento/seventh.webp`}></img>
+              <img className="absolute w-full h-auto object-cover top-0 left-0 hidden max-[1138px]:flex max-[1056px]:hidden" src={`${import.meta.env.BASE_URL}bento/seventhmedium.webp`}></img>
+              <img className="absolute w-full h-auto object-cover top-0 left-0 hidden max-[1056px]:flex" src={`${import.meta.env.BASE_URL}bento/seventhsmall.webp`}></img>
+
+              <div className="absolute left-[16px] top-[16px] flex flex-col items-start justify-center gap-[8px]">
+                <p className="bentotitle text-white">Work directly</p>
+                <p className="alt text-alt !leading-[140%] max-[1138px]:!max-w-[230px]">Manage creator work, files, send products in one place</p>
+              </div>
+            </motion.div>
+            
+
+          </div>
+
+
+
+
+
+        </section>
+
+        
+
+      </section>
+
+
+
+
+
+
+
+
+
+{/* 
+      <section className="w-full flex flex-col items-center justify-center !mt-[164px] max-[760px]:!mt-[92px]">
+
+          <motion.p
+            className="title !mb-[52px] w-fit text-center"
+            initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
+            whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            viewport={{ once: true, amount: 0.35 }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          >
+            How are we different
+          </motion.p>
+
+
+
+      </section> */}
+
+
+
+
+
+          <section className="w-full flex flex-col items-center justify-center !mt-[164px] max-[760px]:!mt-[124px]">
+
+
+          {/* FAQ */}
+          <div
+            id="faq"
+            className="w-full max-w-[1136px] !px-[16px] max-[1132px]:!px-[12px] flex flex-col items-center justify-center mt-[136px] max-[460px]:mt-[112px] gap-[10px] scroll-mt-[200px]"
+          >
+            <motion.p
+            className="title !mb-[52px] w-fit text-center"
+            initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
+            whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            viewport={{ once: true, amount: 0.35 }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          >
+            Common Questions
+            <p className="alt text-alt normal-case max-w-[560px] !pt-[14px]">
+              If you have more - write to us{' '}
+              <span className="text-text  lowercase">hello@contles.co</span>
+            </p>
+          </motion.p>
+            
+            <div className="w-full flex flex-col max-w-[750px] w-full">
+              {(faqLoading ? Array.from({ length: 5 }) : faqItems).map((item, idx) => {
+                const isOpen = openIndex === idx
+                return (
+                  <motion.div key={item?.id ?? idx} className="max-w-[750px] w-full"
+                  
+                  initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
+              whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              viewport={{ once: true, amount: 0.35 }}
+              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+              
+              
+              >
+                    <button
+                      type="button"
+                      onClick={() => setOpenIndex(isOpen ? null : idx)}
+                      className="max-w-[750px] w-full flex items-center justify-between gap-[12px] !py-[16px] group cursor-pointer"
+                      aria-expanded={isOpen}
+                    >
+                      <p
+                        className="alt !text-text !text-[18px] max-[460px]:!text-[16px] !leading-[150%] text-left group-hover:underline underline-offset-[3px] bigalt !text-start"
+                      >
+                        {faqLoading ? 'Loading…' : item.question}
+                      </p>
+                      <span className="ml-[12px] shrink-0 text-alt">
+                        <motion.svg
+                          width="20"
+                          height="20"
+                          viewBox="0 0 20 20"
+                          fill="none"
+                          aria-hidden="true"
+                          animate={{ rotate: 0 }}
+                          transition={{ duration: 0.28, ease: FAQ_EASE }}
+                        >
+                          <motion.path
+                            d="M10 4v12"
+                            stroke="currentColor"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            animate={{ scaleY: isOpen ? 0 : 1 }}
+                            transition={{ duration: 0.28, ease: FAQ_EASE }}
+                            style={{ originY: 0.5, originX: 0.5 }}
+                          />
+                          <path
+                            d="M4 10h12"
+                            stroke="currentColor"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                          />
+                        </motion.svg>
+                      </span>
+                    </button>
+
+                    <motion.div
+                      initial={false}
+                      animate={{ gridTemplateRows: isOpen ? '1fr' : '0fr' }}
+                      transition={{ type: 'tween', ease: FAQ_EASE, duration: 0.35 }}
+                      className="grid"
+                    >
+                      <div className="overflow-hidden">
+                        <motion.div
+                          initial={false}
+                          animate={{ opacity: isOpen ? 1 : 0, y: isOpen ? 0 : -4 }}
+                          transition={{ duration: 0.28, ease: FAQ_EASE }}
+                          className=" !pb-[16px]"
+                          aria-hidden={!isOpen}
+                        >
+                          <p className="alt text-alt text-left max-[460px]:!text-[16px] !leading-[150%]">
+                            {faqLoading ? '' : item.answer}
+                          </p>
+                        </motion.div>
+                      </div>
+                    </motion.div>
+
+                    {idx < (faqLoading ? 5 : faqItems.length) - 1 && (
+                      <div className="w-full h-px bg-border my-[8px]" />
+                    )}
+                  </motion.div>
+                )
+              })}
+            </div>
+          </div>
+
+          </section>
+
+
+
+
+          <section className="w-full flex flex-col items-center justify-center !mt-[164px] max-[760px]:!mt-[124px]">
+
+<section className="w-full flex flex-col items-center justify-center max-w-[1136px] !px-[16px] max-[1132px]:!px-[12px]">
+  
+
+
+          <motion.div 
+        className="w-full flex items-center justify-center rounded-[24px] border border-border !h-fit overflow-hidden bg-[linear-gradient(266deg,_var(--Influencers,_#FC6262)_0%,_var(--Brands,_#5F0EEC)_100.19%)]  relative max-[690px]:rounded-[16px]"
+        initial={{ 
+          opacity: 0, 
+          y: 30,
+          filter: "blur(10px)",
+        }}
+        animate={{ 
+          opacity: 1, 
+          y: 0,
+          filter: "blur(0px)",
+        }}
+        transition={{
+          duration: 1.6,
+          ease: [0.16, 1, 0.3, 1],
+          delay: 1.15,
+        }}
+      >
+
+<div className="w-full flex items-center justify-center flex-col z-20 !mt-[36px] max-[652px]:!mt-[42px] !px-[32px]">
+  <div className="w-[78px] h-[78px] flex items-center justify-center shadow-[0_10px_22.5px_-3px_rgba(0,0,0,0.25),10px_-4px_7px_-8px_rgba(191,76,163,0.25)_inset,0_-13px_7px_-8px_rgba(191,76,163,0.25)_inset,-10px_-4px_7px_-8px_rgba(191,76,163,0.25)_inset] bg-white rounded-[19px]">
+
+    <img src="/branding/icon.svg" alt="icon" className="w-[40px] h-[40px]" />
+
+
+  </div>
+
+
+  <p className="title w-fit text-center text-white !mt-[24px] !mb-[18px]">Creator marketing Reimagined</p>
+
+
+  <button className="big-button !mb-[42px] max-[652px]:!mb-[52px] max-[652px]:!mt-[12px]">
+            <p className="button-text text-white">Start For Free</p>
+        </button>
+
+
+          <div className="w-fit max-[652px]:hidden h-fit flex flex top-[290px] max-[690px]:left-[18px] max-[690px]:right-[18px] max-[690px]:top-[18px] max-[1132px]:left-[48px] max-[1132px]:right-[48px] max-[1132px]:top-[42px] items-center justify-center !p-[6px] max-[690px]:!p-[4px] backdrop-blur-[28px] border border-white/20 !pb-[0px] bg-white/24 shadow-[inset_0_0_8.1px_0_rgba(255,255,255,0.14)] rounded-t-[17px] rounded-b-[0px] max-[690px]:rounded-t-[12px] rounded-b-[0px] border-b-0 overflow-hidden ">
+        
+        <div
+          className="w-full grid"
+          style={{
+            WebkitMaskImage:
+              'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) calc(100% - 100px), rgba(0,0,0,0) 100%)',
+            maskImage:
+              'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) calc(100% - 100px), rgba(0,0,0,0) 100%)',
+            WebkitMaskRepeat: 'no-repeat',
+            maskRepeat: 'no-repeat',
+            WebkitMaskSize: '100% 100%',
+            maskSize: '100% 100%',
+          }}
+        >
+          <img
+            src="/product/smallis.png"
+            alt="Product preview"
+            className="w-full h-auto object-cover rounded-[12px] rounded-b-[0px] max-[690px]:rounded-[8px] col-start-1 row-start-1"
+          />
+        </div>
+
+
+      </div>
+</div>
+
+
+
+        <img className="w-full h-full object-cover absolute top-0 left-0" src={`${import.meta.env.BASE_URL}assets/texture.png`} alt="Texture"/>
+
+
+
+      </motion.div>
+
+
+      <div className="w-full h-fit flex items-center justify-between !mt-[18px] flex-row max-[580px]:flex-col max-[580px]:gap-[12px]">
+
+        <motion.div 
+        initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
+        whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+        viewport={{ once: true, amount: 0 }}
+        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+        className="flex items-center justify-center gap-[24px] w-fit">
+          <p className="alt text-alt opacity-70">2026 © Contles</p>
+          <div className="w-px h-[24px] bg-[#D1D1D1] shadow-[1px_0_0_0_#FFF]" />
+          <Link className="alt text-alt hover:!text-text transition-ease-out duration-200 opacity-70" to="/terms">Terms</Link>
+          <Link className="alt text-alt hover:!text-text transition-ease-out duration-200 opacity-70" to="/privacy">Privacy</Link>
+        </motion.div>
+
+
+          <motion.div 
+          initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
+          whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+          viewport={{ once: true, amount: 0 }}
+          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          className="flex items-center justify-center gap-[10px] w-fit">
+        <p className="alt text-alt opacity-70">Follow us on</p>
+        <div className="flex items-center justify-center gap-[6px] w-fit">
+          <Link to="https://example.com" target="_blank" className="hover:opacity-80 transition-ease-out duration-200"><img src="/heroicons/color-instagram.png" alt="X" className="w-[24px] h-[24px]" /></Link>
+          <Link to="https://example.com" target="_blank" className="hover:opacity-80 transition-ease-out duration-200"><img src="/heroicons/color-tiktok.png" alt="X" className="w-[24px] h-[24px]" /></Link>
+          <Link to="https://example.com" target="_blank" className="hover:opacity-80 transition-ease-out duration-200"><img src="/heroicons/color-linkedin.png" alt="X" className="w-[24px] h-[24px]" /></Link>
+          <Link to="https://example.com" target="_blank" className="hover:opacity-80 transition-ease-out duration-200"><img src="/heroicons/color-twitter.png" alt="X" className="w-[24px] h-[24px]" /></Link>
+          <Link to="https://example.com" target="_blank" className="hover:opacity-80 transition-ease-out duration-200"><img src="/heroicons/color-facebook.png" alt="X" className="w-[24px] h-[24px]" /></Link>
+        </div>
+        </motion.div>
+          
+
+
+        </div>
+
+</section>
+
+
+
+
+</section>
+    
+
+
+
+
+
+
     
     
     </div>

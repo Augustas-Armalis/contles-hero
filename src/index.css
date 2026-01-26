@@ -317,7 +317,6 @@ letter-spacing: -1.32px;
 
 .big-button:hover{
 	box-shadow: none;
-	border: 1px solid rgba(255, 255, 255, 0.5);
 	background: linear-gradient(202deg, #454545 12.34%, #151515 91.37%);
 }
 
