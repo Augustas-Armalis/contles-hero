@@ -1306,21 +1306,10 @@ function Home() {
 
           <motion.div 
         className="w-full flex items-center justify-center rounded-[24px] border border-border !h-fit overflow-hidden bg-[linear-gradient(266deg,_var(--Influencers,_#FC6262)_0%,_var(--Brands,_#5F0EEC)_100.19%)]  relative max-[690px]:rounded-[16px]"
-        initial={{ 
-          opacity: 0, 
-          y: 30,
-          filter: "blur(10px)",
-        }}
-        animate={{ 
-          opacity: 1, 
-          y: 0,
-          filter: "blur(0px)",
-        }}
-        transition={{
-          duration: 1.6,
-          ease: [0.16, 1, 0.3, 1],
-          delay: 1.15,
-        }}
+        initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
+              whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              viewport={{ once: true, amount: 0.35 }}
+              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
       >
 
 <div className="w-full flex items-center justify-center flex-col z-20 !mt-[36px] max-[652px]:!mt-[42px] !px-[32px]">
