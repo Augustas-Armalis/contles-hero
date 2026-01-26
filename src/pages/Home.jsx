@@ -1188,7 +1188,8 @@ function Home() {
 
 
 
-          <section className="w-full flex flex-col items-center justify-center !mt-[164px] max-[760px]:!mt-[124px]">
+          {/* <section className="w-full flex flex-col items-center justify-center !mt-[164px] max-[760px]:!mt-[124px]"> */}
+          <section className="w-full flex flex-col items-center justify-center !mt-[164px] max-[760px]:!mt-[92px]">
 
 
           {/* FAQ */}
