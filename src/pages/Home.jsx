@@ -406,13 +406,13 @@ function Home() {
     <AnimatePresence>
       {isMobileMenuOpen && (
         <motion.section
-          className="w-full h-[200vh] fixed top-0 left-0 right-0 bottom-0 bg-bg backdrop-blur-[16px] z-[5000]"
+          className="w-full fixed inset-0 bg-bg backdrop-blur-[16px] z-[5000] overflow-y-auto overscroll-contain [height:100vh] [height:100dvh]"
           initial={{ opacity: 0, filter: 'blur(18px)' }}
           animate={{ opacity: 1, filter: 'blur(0px)' }}
           exit={{ opacity: 0, filter: 'blur(18px)' }}
           transition={{ duration: 0.42, ease: [0.16, 1, 0.3, 1] }}
         >
-          <section className="w-full h-[100vh] absolute top-0 left-0 right-0 bottom-0 flex flex-col items-center justify-center">
+          <section className="w-full h-full flex flex-col items-center justify-center">
             <div className="w-full h-full flex flex-col items-center justify-between !pt-[52px]">
 
               <div className="w-full h-fit flex flex-col items-start justify-center">
