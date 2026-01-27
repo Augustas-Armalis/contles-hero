@@ -412,7 +412,7 @@ function Home() {
           exit={{ opacity: 0, filter: 'blur(18px)' }}
           transition={{ duration: 0.42, ease: [0.16, 1, 0.3, 1] }}
         >
-          <section className="w-full h-screen absolute top-0 left-0 right-0 bottom-0 flex flex-col items-center justify-center">
+          <section className="w-full h-[100vh] absolute top-0 left-0 right-0 bottom-0 flex flex-col items-center justify-center">
             <div className="w-full h-full flex flex-col items-center justify-between !pt-[52px]">
 
               <div className="w-full h-fit flex flex-col items-start justify-center">
