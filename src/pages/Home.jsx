@@ -255,7 +255,7 @@ function Home() {
           id: 'disappears',
           question: 'What happens if someone doesn’t deliver or disappears?',
           answer:
-            'Clear requirements are set upfront. If the work isn’t delivered as agreed, payments are not released.',
+            'Clear requirements are set upfront. If the work isn’t delivered as agreed, payouts are not released.',
         },
         {
           id: 'direct',
@@ -413,8 +413,36 @@ function Home() {
           transition={{ duration: 0.42, ease: [0.16, 1, 0.3, 1] }}
         >
           <section className="w-full h-screen absolute top-0 left-0 right-0 bottom-0 flex flex-col items-center justify-center">
-            <div className="w-full h-full flex flex-col items-center justify-center">
-              <p className="text-text bigalt">Kas Skaitys Tas Gaidys</p>
+            <div className="w-full h-full flex flex-col items-center justify-between !pt-[52px]">
+
+              <div className="w-full h-fit flex flex-col items-start justify-center">
+                <Link to="https://www.contles.com" className="w-full h-fit !py-[16px] flex flex-col items-start justify-center !px-[14px] border-b border-border border-t">
+                  <p  className="!text-text alt !text-[24px]">Home</p>
+                </Link>
+                <Link to="https://www.join.contles.com" className="w-full h-fit !py-[16px] flex flex-col items-start justify-center !px-[14px] border-b border-border">
+                  <p  className="!text-text alt !text-[24px]">For Brands</p>
+                </Link>
+                <Link to="https://www.join.contles.com" className="w-full h-fit !py-[16px] flex flex-col items-start justify-center !px-[14px] border-b border-border">
+                  <p  className="!text-text alt !text-[24px]">For Creators</p>
+                </Link>
+                <Link to="https://www.join.contles.com" className="w-full h-fit !py-[16px] flex flex-col items-start justify-center !px-[14px] border-b border-border">
+                  <p  className="!text-text alt !text-[24px]">Blog</p>
+                </Link>
+                
+                
+              </div>
+
+
+              <div className="w-full h-fit !py-[18px] !px-[14px] flex flex-col items-center justify-center border-t border-border">
+
+              <Link to="/contact" className="alt-small-button !w-full !py-[8px] !px-[14px] !rounded-[12px]">
+            <p className="small-button-text text-text !text-[18px]">Contact</p>
+              </Link>
+                
+              </div>
+
+
+
             </div>
           </section>
         </motion.section>
@@ -442,25 +470,25 @@ function Home() {
     >
       <section className="relative w-full h-fit max-w-[1100px] flex items-center justify-between">
 
-        <Link to="/"><img src={`${import.meta.env.BASE_URL}branding/logo.svg`} alt="Contles" className="w-auto h-[24px]" /></Link>
+        <Link to="https://www.contles.com"><img src={`${import.meta.env.BASE_URL}branding/logo.svg`} alt="Contles" className="w-auto h-[24px]" /></Link>
 
         <div className="flex items-center gap-[6px] justify-center max-[800px]:hidden right-0">
           
-          <button className="alt-small-button ">
-            <p className="small-button-text text-text">Log In</p>
-          </button>
+          <Link to="/contact" className="alt-small-button">
+            <p className="small-button-text text-text">Contact</p>
+          </Link>
 
-          <button className="small-button ">
+          <Link to="https://www.join.contles.com" className="small-button ">
             <p className="small-button-text text-white">Join Today</p>
-          </button>
+          </Link>
         </div>
 
 
 
         <div className="flex items-center gap-[6px] justify-center !hidden max-[800px]:!flex">
-          <button className="small-button !py-[6px] !px-[12px] !rounded-[10px] ">
+          <Link to="https://www.join.contles.com" className="small-button !py-[6px] !px-[12px] !rounded-[10px] ">
               <p className="small-button-text text-white !text-[15px] !tracking-[-1%]">Join Today</p>
-          </button>
+          </Link>
           <button
             type="button"
             aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
@@ -575,10 +603,10 @@ function Home() {
 
 
         <div className="absolute inset-0 flex items-center justify-center gap-[32px] pointer-events-none max-[800px]:hidden">
-          <Link to="/" className="text-alt alt pointer-events-auto hover:!text-text transition-ease-out duration-200">Home</Link>
-          <Link to="/brand" className="text-alt alt pointer-events-auto hover:!text-brands transition-ease-out duration-200">For Brands</Link>
-          <Link to="/creator" className="text-alt alt pointer-events-auto hover:!text-creators transition-ease-out duration-200">For Creators</Link>
-          <Link to="/blog" className="text-alt alt pointer-events-auto hover:!text-text transition-ease-out duration-200">Blog</Link>
+          <Link to="https://www.contles.com" className="text-alt alt pointer-events-auto hover:!text-text transition-ease-out duration-200">Home</Link>
+          <Link to="https://www.join.contles.com" className="text-alt alt pointer-events-auto hover:!text-brands transition-ease-out duration-200">For Brands</Link>
+          <Link to="https://www.join.contles.com" className="text-alt alt pointer-events-auto hover:!text-creators transition-ease-out duration-200">For Creators</Link>
+          <Link to="https://www.join.contles.com" className="text-alt alt pointer-events-auto hover:!text-text transition-ease-out duration-200">Blog</Link>
         </div>
 
       </section>
@@ -682,9 +710,9 @@ function Home() {
             backfaceVisibility: 'hidden',
           }}
         >
-          <button className="big-button">
+          <Link to="https://www.join.contles.com" className="big-button">
             <p className="button-text text-white">Start Marketing</p>
-          </button>
+          </Link>
         </motion.div>
 
       </motion.section>
@@ -1186,7 +1214,7 @@ function Home() {
           
 initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
 whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-viewport={{ once: true, amount: 0.35 }}
+viewport={{ once: true, amount: 0 }}
 transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
 
 
@@ -1883,7 +1911,7 @@ transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
         className="w-full flex items-center justify-center rounded-[24px] border border-border !h-fit overflow-hidden bg-[linear-gradient(266deg,_var(--Influencers,_#FC6262)_0%,_var(--Brands,_#5F0EEC)_100.19%)]  relative max-[690px]:rounded-[16px]"
         initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
               whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-              viewport={{ once: true, amount: 0.35 }}
+              viewport={{ once: true, amount: 0.17 }}
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
       >
 
@@ -1899,9 +1927,9 @@ transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
   <p className="title w-fit text-center text-white !mt-[24px] !mb-[18px]">Creator marketing Reimagined</p>
 
 
-  <button className="big-button !mb-[42px] max-[652px]:!mb-[52px] max-[652px]:!mt-[12px]">
+  <Link to="https://www.join.contles.com" className="big-button !mb-[42px] max-[652px]:!mb-[52px] max-[652px]:!mt-[12px]">
             <p className="button-text text-white">Start For Free</p>
-        </button>
+        </Link>
 
 
           <div className="w-fit max-[652px]:hidden h-fit flex flex top-[290px] max-[690px]:left-[18px] max-[690px]:right-[18px] max-[690px]:top-[18px] max-[1132px]:left-[48px] max-[1132px]:right-[48px] max-[1132px]:top-[42px] items-center justify-center !p-[6px] max-[690px]:!p-[4px] backdrop-blur-[28px] border border-white/20 !pb-[0px] bg-white/24 shadow-[inset_0_0_8.1px_0_rgba(255,255,255,0.14)] rounded-t-[17px] rounded-b-[0px] max-[690px]:rounded-t-[12px] rounded-b-[0px] border-b-0 overflow-hidden ">
