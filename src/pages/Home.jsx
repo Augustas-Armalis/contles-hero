@@ -1166,12 +1166,10 @@ function Home() {
 
 
 
-
-{/* 
-      <section className="w-full flex flex-col items-center justify-center !mt-[164px] max-[760px]:!mt-[92px]">
-
+      <section className="relative w-full h-fit max-w-[1132px] flex items-center justify-between !px-[16px] max-[1132px]:!px-[12px]">
+        <section className="w-full flex flex-col items-center justify-center !mt-[164px] max-[760px]:!mt-[92px]">
           <motion.p
-            className="title !mb-[52px] w-fit text-center"
+            className="title  w-fit text-center"
             initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
             whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
             viewport={{ once: true, amount: 0.35 }}
@@ -1180,9 +1178,585 @@ function Home() {
             How are we different
           </motion.p>
 
+          <img src={`${import.meta.env.BASE_URL}heroicons/vertical.svg`} alt="alert" className="w-auto h-[20px] !mt-[8px] hidden max-[630px]:flex" />
+
+          <motion.div className="w-full !mt-[52px] max-[630px]:!mt-[42px] h-fit flex flex-row items-center justify-between max-[945px]:overflow-x-auto nice-scrollbar"
+          
+          
+          
+initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
+whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+viewport={{ once: true, amount: 0.35 }}
+transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
 
 
-      </section> */}
+>
+            <div className="w-fit flex flex-shrink-0 flex flex-col">
+              <div className="w-full h-[64px]"></div>
+
+
+
+              <div className="w-full h-[52px] !py-[16px] border-b border-t border-border">
+                <p className="alt text-alt max-[945px]:!text-[14px] !mr-[14px]">
+                Buy real results
+                </p>
+              </div>
+
+              <div className="w-full h-[52px] !py-[16px] border-b border-border">
+                <p className="alt text-alt max-[945px]:!text-[14px] !mr-[14px]">
+                Clear goals upfront
+                </p>
+              </div>
+
+
+              <div className="w-full h-[52px] !py-[16px] border-b border-border">
+                <p className="alt text-alt max-[945px]:!text-[14px] !mr-[14px]">
+                  Verified creators & brands
+                </p>
+              </div>
+              <div className="w-full h-[52px] !py-[16px] border-b border-border">
+                <p className="alt text-alt max-[945px]:!text-[14px] !mr-[14px]">
+                Performance tracking
+                </p>
+              </div>
+              <div className="w-full h-[52px] !py-[16px] border-b border-border">
+                <p className="alt text-alt max-[945px]:!text-[14px] !mr-[14px]">
+                Secure payments
+                </p>
+              </div>
+              <div className="w-full h-[52px] !py-[16px] border-b border-border">
+                <p className="alt text-alt max-[945px]:!text-[14px] !mr-[14px]">
+                Direct collaboration
+                </p>
+              </div>
+              <div className="w-full h-[52px] !py-[16px] border-b border-border">
+                <p className="alt text-alt max-[945px]:!text-[14px] !mr-[14px]">
+                On-platform chat
+                </p>
+              </div>
+              <div className="w-full h-[52px] !py-[16px] border-b border-border">
+                <p className="alt text-alt max-[945px]:!text-[14px] !mr-[14px]">
+                UGC & product send
+                </p>
+              </div>
+              <div className="w-full h-[52px] !py-[16px] border-b border-border">
+                <p className="alt text-alt max-[945px]:!text-[14px] !mr-[14px]">
+                Campaigns & direct work
+                </p>
+              </div>
+              <div className="w-full h-[52px] !py-[16px] border-b border-border">
+                <p className="alt text-alt max-[945px]:!text-[14px] !mr-[14px]">
+                Creator & brand search
+                </p>
+              </div>
+              <div className="w-full h-[52px] !py-[16px] border-b border-border">
+                <p className="alt text-alt max-[945px]:!text-[14px] !mr-[14px]">
+                Scales without overhaed
+                </p>
+              </div>
+              <div className="w-full h-[14px]">
+                
+              </div>
+
+
+
+
+
+
+            </div>
+
+            <div className="w-full !py-[16px] min-w-[64px] flex flex-col">
+              <div className="w-full border-t border-r border-l  flex items-center justify-center border-border rounded-t-[16px] h-[64px] bg-white ">
+                <img
+                  src={`${import.meta.env.BASE_URL}branding/logo.svg`}
+                  alt="logo"
+                  className="w-auto h-[24px] max-[945px]:hidden"
+                />
+                <img
+                  src={`${import.meta.env.BASE_URL}branding/icon.svg`}
+                  alt="logo"
+                  className="w-auto h-[24px] hidden max-[945px]:flex"
+                />
+              </div>
+
+
+
+
+              <div className="w-full h-fit !py-[16px] !px-[16px] border-l border-r border-border bg-white gap-[8px] flex items-center justify-start max-[945px]:justify-center">
+                <img
+                  src={`${import.meta.env.BASE_URL}heroicons/check.svg`}
+                  alt="check"
+                  className="w-auto h-[20px] "
+                />
+                <p className="alt !text-text max-[945px]:hidden">Yes</p>
+              </div>
+
+              <div className="w-full h-fit !py-[16px] !px-[16px] border-l border-r border-border bg-white gap-[8px] flex items-center justify-start max-[945px]:justify-center">
+                <img
+                  src={`${import.meta.env.BASE_URL}heroicons/check.svg`}
+                  alt="check"
+                  className="w-auto h-[20px] "
+                />
+                <p className="alt !text-text max-[945px]:hidden">Always</p>
+              </div>
+
+              <div className="w-full h-fit !py-[16px] !px-[16px] border-l border-r border-border bg-white gap-[8px] flex items-center justify-start max-[945px]:justify-center">
+                <img
+                  src={`${import.meta.env.BASE_URL}heroicons/check.svg`}
+                  alt="check"
+                  className="w-auto h-[20px] "
+                />
+                <p className="alt !text-text max-[945px]:hidden">Yes</p>
+              </div>
+
+              <div className="w-full h-fit !py-[16px] !px-[16px] border-l border-r border-border bg-white gap-[8px] flex items-center justify-start max-[945px]:justify-center">
+                <img
+                  src={`${import.meta.env.BASE_URL}heroicons/check.svg`}
+                  alt="check"
+                  className="w-auto h-[20px] "
+                />
+                <p className="alt !text-text max-[945px]:hidden">Built-in</p>
+              </div>
+
+              <div className="w-full h-fit !py-[16px] !px-[16px] border-l border-r border-border bg-white gap-[8px] flex items-center justify-start max-[945px]:justify-center">
+                <img
+                  src={`${import.meta.env.BASE_URL}heroicons/check.svg`}
+                  alt="check"
+                  className="w-auto h-[20px] "
+                />
+                <p className="alt !text-text max-[945px]:hidden">Built-in</p>
+              </div>
+
+              <div className="w-full h-fit !py-[16px] !px-[16px] border-l border-r border-border bg-white gap-[8px] flex items-center justify-start max-[945px]:justify-center">
+                <img
+                  src={`${import.meta.env.BASE_URL}heroicons/check.svg`}
+                  alt="check"
+                  className="w-auto h-[20px] "
+                />
+                <p className="alt !text-text max-[945px]:hidden">Built-in</p>
+              </div>
+
+              <div className="w-full h-fit !py-[16px] !px-[16px] border-l border-r border-border bg-white gap-[8px] flex items-center justify-start max-[945px]:justify-center">
+                <img
+                  src={`${import.meta.env.BASE_URL}heroicons/check.svg`}
+                  alt="check"
+                  className="w-auto h-[20px] "
+                />
+                <p className="alt !text-text max-[945px]:hidden">Yes</p>
+              </div>
+
+              <div className="w-full h-fit !py-[16px] !px-[16px] border-l border-r border-border bg-white gap-[8px] flex items-center justify-start max-[945px]:justify-center">
+                <img
+                  src={`${import.meta.env.BASE_URL}heroicons/check.svg`}
+                  alt="check"
+                  className="w-auto h-[20px] "
+                />
+                <p className="alt !text-text max-[945px]:hidden">Built-in</p>
+              </div>
+
+              <div className="w-full h-fit !py-[16px] !px-[16px] border-l border-r border-border bg-white gap-[8px] flex items-center justify-start max-[945px]:justify-center">
+                <img
+                  src={`${import.meta.env.BASE_URL}heroicons/check.svg`}
+                  alt="check"
+                  className="w-auto h-[20px] "
+                />
+                <p className="alt !text-text max-[945px]:hidden">Both</p>
+              </div>
+
+              <div className="w-full h-fit !py-[16px] !px-[16px] border-l border-r border-border bg-white gap-[8px] flex items-center justify-start max-[945px]:justify-center">
+                <img
+                  src={`${import.meta.env.BASE_URL}heroicons/check.svg`}
+                  alt="check"
+                  className="w-auto h-[20px] "
+                />
+                <p className="alt !text-text max-[945px]:hidden">Free & verified</p>
+              </div>
+              <div className="w-full h-fit !py-[16px] !px-[16px] border-l border-r border-border bg-white gap-[8px] flex items-center justify-start max-[945px]:justify-center">
+                <img
+                  src={`${import.meta.env.BASE_URL}heroicons/check.svg`}
+                  alt="check"
+                  className="w-auto h-[20px] "
+                />
+                <p className="alt !text-text max-[945px]:hidden">Yes</p>
+              </div>
+
+
+              <div className="w-full h-[14px] border-l border-r border-border border-b rounded-b-[16px] bg-white gap-[8px] flex items-center justify-start max-[945px]:justify-center">
+                
+              </div>
+
+
+
+
+
+
+            </div>
+
+            
+
+
+
+
+
+
+
+
+
+
+
+            <div className="w-full min-w-[120px] !py-[16px] flex flex-col">
+              <div className="w-full !px-[16px] flex items-center justify-center h-[64px]">
+                <p className="alt !text-[18px] text-alt max-[945px]:!text-[16px]">
+                Competitors
+                </p>
+              </div>
+
+              <div className="w-full h-[52px] !py-[16px] !px-[16px] border-b border-t border-border  gap-[8px] flex items-center justify-start max-[945px]:justify-center">
+                <img
+                  src={`${import.meta.env.BASE_URL}heroicons/x.svg`}
+                  alt="check"
+                  className="w-[20px] h-[20px]"
+                />
+                <p className="alt max-[945px]:hidden">Flat fees</p>
+              </div>
+
+              <div className="w-full h-[52px] !py-[16px] !px-[16px] border-b  border-border  gap-[8px] flex items-center justify-start max-[945px]:justify-center">
+                <img
+                  src={`${import.meta.env.BASE_URL}heroicons/alert.svg`}
+                  alt="check"
+                  className="w-[20px] h-[20px]"
+                />
+                <p className="alt max-[945px]:hidden">Sometimes</p>
+              </div>
+              <div className="w-full h-[52px] !py-[16px] !px-[16px] border-b  border-border  gap-[8px] flex items-center justify-start max-[945px]:justify-center">
+                <img
+                  src={`${import.meta.env.BASE_URL}heroicons/alert.svg`}
+                  alt="check"
+                  className="w-[20px] h-[20px]"
+                />
+                <p className="alt max-[945px]:hidden">Mixed</p>
+              </div>
+              <div className="w-full h-[52px] !py-[16px] !px-[16px] border-b  border-border  gap-[8px] flex items-center justify-start max-[945px]:justify-center">
+                <img
+                  src={`${import.meta.env.BASE_URL}heroicons/alert.svg`}
+                  alt="check"
+                  className="w-[20px] h-[20px]"
+                />
+                <p className="alt max-[945px]:hidden">Limited</p>
+              </div>
+              <div className="w-full h-fit !py-[16px] !px-[16px] border-b  border-border  gap-[8px] flex items-center justify-start max-[945px]:justify-center">
+                <img
+                  src={`${import.meta.env.BASE_URL}heroicons/alert.svg`}
+                  alt="check"
+                  className="w-[20px] h-[20px]"
+                />
+                <p className="alt max-[945px]:hidden">Platform rules</p>
+              </div>
+              <div className="w-full h-[52px] !py-[16px] !px-[16px] border-b  border-border  gap-[8px] flex items-center justify-start max-[945px]:justify-center">
+                <img
+                  src={`${import.meta.env.BASE_URL}heroicons/alert.svg`}
+                  alt="check"
+                  className="w-[20px] h-[20px]"
+                />
+                <p className="alt max-[945px]:hidden">Limited</p>
+              </div>
+              <div className="w-full h-[52px] !py-[16px] !px-[16px] border-b  border-border  gap-[8px] flex items-center justify-start max-[945px]:justify-center">
+                <img
+                  src={`${import.meta.env.BASE_URL}heroicons/alert.svg`}
+                  alt="check"
+                  className="w-[20px] h-[20px]"
+                />
+                <p className="alt max-[945px]:hidden">Basic</p>
+              </div>
+
+
+              <div className="w-full h-[52px] !py-[16px] !px-[16px] border-b  border-border  gap-[8px] flex items-center justify-start max-[945px]:justify-center">
+                <img
+                  src={`${import.meta.env.BASE_URL}heroicons/x.svg`}
+                  alt="check"
+                  className="w-[20px] h-[20px]"
+                />
+                <p className="alt max-[945px]:hidden">No</p>
+              </div>
+
+              <div className="w-full h-[52px] !py-[16px] !px-[16px] border-b  border-border  gap-[8px] flex items-center justify-start max-[945px]:justify-center">
+                <img
+                  src={`${import.meta.env.BASE_URL}heroicons/x.svg`}
+                  alt="check"
+                  className="w-[20px] h-[20px]"
+                />
+                <p className="alt max-[945px]:hidden">Only campaigns</p>
+              </div>
+              <div className="w-full h-[52px] !py-[16px] !px-[16px] border-b  border-border  gap-[8px] flex items-center justify-start max-[945px]:justify-center">
+                <img
+                  src={`${import.meta.env.BASE_URL}heroicons/x.svg`}
+                  alt="check"
+                  className="w-[20px] h-[20px]"
+                />
+                <p className="alt max-[945px]:hidden">Often paid</p>
+              </div>
+
+              <div className="w-full h-[52px] !py-[16px] !px-[16px] border-b  border-border  gap-[8px] flex items-center justify-start max-[945px]:justify-center">
+                <img
+                  src={`${import.meta.env.BASE_URL}heroicons/alert.svg`}
+                  alt="check"
+                  className="w-[20px] h-[20px]"
+                />
+                <p className="alt max-[945px]:hidden">Limited</p>
+              </div>
+
+              <div className="w-full h-[12px]">
+                
+              </div>
+
+
+
+
+            </div>
+
+
+
+
+
+
+            <div className="w-full !py-[16px] flex flex-col min-w-[120px]">
+              <div className="w-full !px-[16px] flex items-center justify-center h-[64px]">
+                <p className="alt !text-[18px] text-alt max-[945px]:!text-[16px]">
+                  Agencies
+                </p>
+              </div>
+
+              <div className="w-full h-[52px] !py-[16px] !px-[16px] border-b border-t border-border  gap-[8px] flex items-center justify-start max-[945px]:justify-center">
+                <img
+                  src={`${import.meta.env.BASE_URL}heroicons/x.svg`}
+                  alt="check"
+                  className="w-[20px] h-[20px]"
+                />
+                <p className="alt max-[945px]:hidden">Retainers</p>
+              </div>
+
+              <div className="w-full h-[52px] !py-[16px] !px-[16px] border-b  border-border  gap-[8px] flex items-center justify-start max-[945px]:justify-center">
+                <img
+                  src={`${import.meta.env.BASE_URL}heroicons/alert.svg`}
+                  alt="check"
+                  className="w-[20px] h-[20px]"
+                />
+                <p className="alt max-[945px]:hidden">Depends</p>
+              </div>
+              <div className="w-full h-[52px] !py-[16px] !px-[16px] border-b  border-border  gap-[8px] flex items-center justify-start max-[945px]:justify-center">
+                <img
+                  src={`${import.meta.env.BASE_URL}heroicons/alert.svg`}
+                  alt="check"
+                  className="w-[20px] h-[20px]"
+                />
+                <p className="alt max-[945px]:hidden">Curated</p>
+              </div>
+              <div className="w-full h-[52px] !py-[16px] !px-[16px] border-b  border-border  gap-[8px] flex items-center justify-start max-[945px]:justify-center">
+                <img
+                  src={`${import.meta.env.BASE_URL}heroicons/alert.svg`}
+                  alt="check"
+                  className="w-[20px] h-[20px]"
+                />
+                <p className="alt max-[945px]:hidden">Reported</p>
+              </div>
+              <div className="w-full h-fit !py-[16px] !px-[16px] border-b  border-border  gap-[8px] flex items-center justify-start max-[945px]:justify-center">
+                <img
+                  src={`${import.meta.env.BASE_URL}heroicons/alert.svg`}
+                  alt="check"
+                  className="w-[20px] h-[20px]"
+                />
+                <p className="alt max-[945px]:hidden">Contracts</p>
+              </div>
+              <div className="w-full h-[52px] !py-[16px] !px-[16px] border-b  border-border  gap-[8px] flex items-center justify-start max-[945px]:justify-center">
+                <img
+                  src={`${import.meta.env.BASE_URL}heroicons/x.svg`}
+                  alt="check"
+                  className="w-[20px] h-[20px]"
+                />
+                <p className="alt max-[945px]:hidden">Managed</p>
+              </div>
+              <div className="w-full h-[52px] !py-[16px] !px-[16px] border-b  border-border  gap-[8px] flex items-center justify-start max-[945px]:justify-center">
+                <img
+                  src={`${import.meta.env.BASE_URL}heroicons/x.svg`}
+                  alt="check"
+                  className="w-[20px] h-[20px]"
+                />
+                <p className="alt max-[945px]:hidden">No</p>
+              </div>
+
+
+              <div className="w-full h-[52px] !py-[16px] !px-[16px] border-b  border-border  gap-[8px] flex items-center justify-start max-[945px]:justify-center">
+                <img
+                  src={`${import.meta.env.BASE_URL}heroicons/alert.svg`}
+                  alt="check"
+                  className="w-[20px] h-[20px]"
+                />
+                <p className="alt max-[945px]:hidden">Manual</p>
+              </div>
+
+              <div className="w-full h-[52px] !py-[16px] !px-[16px] border-b  border-border  gap-[8px] flex items-center justify-start max-[945px]:justify-center">
+                <img
+                  src={`${import.meta.env.BASE_URL}heroicons/x.svg`}
+                  alt="check"
+                  className="w-[20px] h-[20px]"
+                />
+                <p className="alt max-[945px]:hidden">Managed</p>
+              </div>
+              <div className="w-full h-[52px] !py-[16px] !px-[16px] border-b  border-border  gap-[8px] flex items-center justify-start max-[945px]:justify-center">
+                <img
+                  src={`${import.meta.env.BASE_URL}heroicons/x.svg`}
+                  alt="check"
+                  className="w-[20px] h-[20px]"
+                />
+                <p className="alt max-[945px]:hidden">No</p>
+              </div>
+
+              <div className="w-full h-[52px] !py-[16px] !px-[16px] border-b  border-border  gap-[8px] flex items-center justify-start max-[945px]:justify-center">
+                <img
+                  src={`${import.meta.env.BASE_URL}heroicons/x.svg`}
+                  alt="check"
+                  className="w-[20px] h-[20px]"
+                />
+                <p className="alt max-[945px]:hidden">Expensive</p>
+              </div>
+
+              <div className="w-full h-[12px]">
+                
+              </div>
+
+
+
+
+            </div>
+
+
+
+
+
+
+
+            <div className="w-full min-w-[120px] !py-[16px] flex flex-col">
+              <div className="w-full !px-[16px] flex items-center justify-center h-[64px]">
+                <p className="alt !text-[18px] text-alt max-[945px]:!text-[16px]">
+                DMs/manual
+                </p>
+              </div>
+
+              <div className="w-full h-[52px] !py-[16px] !px-[16px] border-b border-t border-border  gap-[8px] flex items-center justify-start max-[945px]:justify-center">
+                <img
+                  src={`${import.meta.env.BASE_URL}heroicons/x.svg`}
+                  alt="check"
+                  className="w-[20px] h-[20px]"
+                />
+                <p className="alt max-[945px]:hidden">No guarantees</p>
+              </div>
+
+              <div className="w-full h-[52px] !py-[16px] !px-[16px] border-b  border-border  gap-[8px] flex items-center justify-start max-[945px]:justify-center">
+                <img
+                  src={`${import.meta.env.BASE_URL}heroicons/x.svg`}
+                  alt="check"
+                  className="w-[20px] h-[20px]"
+                />
+                <p className="alt max-[945px]:hidden">Rarely</p>
+              </div>
+
+
+              
+              <div className="w-full h-[52px] !py-[16px] !px-[16px] border-b  border-border  gap-[8px] flex items-center justify-start max-[945px]:justify-center">
+                <img
+                  src={`${import.meta.env.BASE_URL}heroicons/x.svg`}
+                  alt="check"
+                  className="w-[20px] h-[20px]"
+                />
+                <p className="alt max-[945px]:hidden">No</p>
+              </div>
+              <div className="w-full h-[52px] !py-[16px] !px-[16px] border-b  border-border  gap-[8px] flex items-center justify-start max-[945px]:justify-center">
+                <img
+                  src={`${import.meta.env.BASE_URL}heroicons/x.svg`}
+                  alt="check"
+                  className="w-[20px] h-[20px]"
+                />
+                <p className="alt max-[945px]:hidden">None</p>
+              </div>
+              <div className="w-full h-fit !py-[16px] !px-[16px] border-b  border-border  gap-[8px] flex items-center justify-start max-[945px]:justify-center">
+                <img
+                  src={`${import.meta.env.BASE_URL}heroicons/x.svg`}
+                  alt="check"
+                  className="w-[20px] h-[20px]"
+                />
+                <p className="alt max-[945px]:hidden">Too risky</p>
+              </div>
+              <div className="w-full h-[52px] !py-[16px] !px-[16px] border-b  border-border  gap-[8px] flex items-center justify-start max-[945px]:justify-center">
+                <img
+                  src={`${import.meta.env.BASE_URL}heroicons/x.svg`}
+                  alt="check"
+                  className="w-[20px] h-[20px]"
+                />
+                <p className="alt max-[945px]:hidden">Messy</p>
+              </div>
+              <div className="w-full h-[52px] !py-[16px] !px-[16px] border-b  border-border  gap-[8px] flex items-center justify-start max-[945px]:justify-center">
+                <img
+                  src={`${import.meta.env.BASE_URL}heroicons/x.svg`}
+                  alt="check"
+                  className="w-[20px] h-[20px]"
+                />
+                <p className="alt max-[945px]:hidden">Scattered</p>
+              </div>
+
+
+              <div className="w-full h-[52px] !py-[16px] !px-[16px] border-b  border-border  gap-[8px] flex items-center justify-start max-[945px]:justify-center">
+                <img
+                  src={`${import.meta.env.BASE_URL}heroicons/x.svg`}
+                  alt="check"
+                  className="w-[20px] h-[20px]"
+                />
+                <p className="alt max-[945px]:hidden">Manual</p>
+              </div>
+
+              <div className="w-full h-[52px] !py-[16px] !px-[16px] border-b  border-border  gap-[8px] flex items-center justify-start max-[945px]:justify-center">
+                <img
+                  src={`${import.meta.env.BASE_URL}heroicons/x.svg`}
+                  alt="check"
+                  className="w-[20px] h-[20px]"
+                />
+                <p className="alt max-[945px]:hidden">Manual</p>
+              </div>
+              <div className="w-full h-[52px] !py-[16px] !px-[16px] border-b  border-border  gap-[8px] flex items-center justify-start max-[945px]:justify-center">
+                <img
+                  src={`${import.meta.env.BASE_URL}heroicons/x.svg`}
+                  alt="check"
+                  className="w-[20px] h-[20px]"
+                />
+                <p className="alt max-[945px]:hidden">No</p>
+              </div>
+
+              <div className="w-full h-[52px] !py-[16px] !px-[16px] border-b  border-border  gap-[8px] flex items-center justify-start max-[945px]:justify-center">
+                <img
+                  src={`${import.meta.env.BASE_URL}heroicons/x.svg`}
+                  alt="check"
+                  className="w-[20px] h-[20px]"
+                />
+                <p className="alt max-[945px]:hidden">Time-heavy</p>
+              </div>
+
+              <div className="w-full h-[12px]">
+                
+              </div>
+
+
+
+
+            </div>
+
+
+
+
+
+
+
+          </motion.div>
+        </section>
+      </section>
 
 
 
@@ -1388,11 +1962,11 @@ function Home() {
           className="flex items-center justify-center gap-[10px] w-fit">
         <p className="alt text-alt opacity-70">Follow us on</p>
         <div className="flex items-center justify-center gap-[6px] w-fit">
-          <Link to="https://example.com" target="_blank" className="hover:opacity-80 transition-ease-out duration-200"><img src={`${import.meta.env.BASE_URL}heroicons/color-instagram.png`} alt="Instagram" className="w-[24px] h-[24px]" /></Link>
-          <Link to="https://example.com" target="_blank" className="hover:opacity-80 transition-ease-out duration-200"><img src={`${import.meta.env.BASE_URL}heroicons/color-tiktok.png`} alt="TikTok" className="w-[24px] h-[24px]" /></Link>
-          <Link to="https://example.com" target="_blank" className="hover:opacity-80 transition-ease-out duration-200"><img src={`${import.meta.env.BASE_URL}heroicons/color-linkedin.png`} alt="LinkedIn" className="w-[24px] h-[24px]" /></Link>
-          <Link to="https://example.com" target="_blank" className="hover:opacity-80 transition-ease-out duration-200"><img src={`${import.meta.env.BASE_URL}heroicons/color-twitter.png`} alt="X" className="w-[24px] h-[24px]" /></Link>
-          <Link to="https://example.com" target="_blank" className="hover:opacity-80 transition-ease-out duration-200"><img src={`${import.meta.env.BASE_URL}heroicons/color-facebook.png`} alt="Facebook" className="w-[24px] h-[24px]" /></Link>
+          <Link to="https://www.instagram.com/trycontles/" target="_blank" className="hover:opacity-80 transition-ease-out duration-200"><img src={`${import.meta.env.BASE_URL}heroicons/color-instagram.png`} alt="Instagram" className="w-[24px] h-[24px]" /></Link>
+          <Link to="https://www.tiktok.com/@trycontles" target="_blank" className="hover:opacity-80 transition-ease-out duration-200"><img src={`${import.meta.env.BASE_URL}heroicons/color-tiktok.png`} alt="TikTok" className="w-[24px] h-[24px]" /></Link>
+          <Link to="https://www.linkedin.com/company/contles/" target="_blank" className="hover:opacity-80 transition-ease-out duration-200"><img src={`${import.meta.env.BASE_URL}heroicons/color-linkedin.png`} alt="LinkedIn" className="w-[24px] h-[24px]" /></Link>
+          <Link to="https://x.com/trycontles" target="_blank" className="hover:opacity-80 transition-ease-out duration-200"><img src={`${import.meta.env.BASE_URL}heroicons/color-twitter.png`} alt="X" className="w-[24px] h-[24px]" /></Link>
+          <Link to="https://www.facebook.com/profile.php?id=61585310110358" target="_blank" className="hover:opacity-80 transition-ease-out duration-200"><img src={`${import.meta.env.BASE_URL}heroicons/color-facebook.png`} alt="Facebook" className="w-[24px] h-[24px]" /></Link>
         </div>
         </motion.div>
           

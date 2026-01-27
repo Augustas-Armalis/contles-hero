@@ -196,7 +196,14 @@ video {
 }
 
 
+.nice-scrollbar {
+	scrollbar-width: thin;
+	scrollbar-color: #e8e8e8 transparent;
+}
 
+.nice-scrollbar::-webkit-scrollbar {
+	width: 2px;
+}
 
 
 
