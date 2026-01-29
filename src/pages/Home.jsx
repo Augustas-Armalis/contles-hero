@@ -419,13 +419,13 @@ function Home() {
                 <Link to="https://www.contles.com" className="w-full h-fit !py-[16px] flex flex-col items-start justify-center !px-[14px] border-b border-border border-t">
                   <p  className="!text-text alt !text-[24px]">Home</p>
                 </Link>
-                <Link to="https://www.join.contles.com" className="w-full h-fit !py-[16px] flex flex-col items-start justify-center !px-[14px] border-b border-border">
+                <Link to="https://join.contles.com" className="w-full h-fit !py-[16px] flex flex-col items-start justify-center !px-[14px] border-b border-border">
                   <p  className="!text-text alt !text-[24px]">For Brands</p>
                 </Link>
-                <Link to="https://www.join.contles.com" className="w-full h-fit !py-[16px] flex flex-col items-start justify-center !px-[14px] border-b border-border">
+                <Link to="https://join.contles.com" className="w-full h-fit !py-[16px] flex flex-col items-start justify-center !px-[14px] border-b border-border">
                   <p  className="!text-text alt !text-[24px]">For Creators</p>
                 </Link>
-                <Link to="https://www.join.contles.com" className="w-full h-fit !py-[16px] flex flex-col items-start justify-center !px-[14px] border-b border-border">
+                <Link to="https://join.contles.com" className="w-full h-fit !py-[16px] flex flex-col items-start justify-center !px-[14px] border-b border-border">
                   <p  className="!text-text alt !text-[24px]">Blog</p>
                 </Link>
                 
@@ -478,7 +478,7 @@ function Home() {
             <p className="small-button-text text-text">Contact</p>
           </Link>
 
-          <Link to="https://www.join.contles.com" className="small-button ">
+          <Link to="https://join.contles.com" className="small-button ">
             <p className="small-button-text text-white">Join Today</p>
           </Link>
         </div>
@@ -486,7 +486,7 @@ function Home() {
 
 
         <div className="flex items-center gap-[6px] justify-center !hidden max-[800px]:!flex">
-          <Link to="https://www.join.contles.com" className="small-button !py-[6px] !px-[12px] !rounded-[10px] ">
+          <Link to="https://join.contles.com" className="small-button !py-[6px] !px-[12px] !rounded-[10px] ">
               <p className="small-button-text text-white !text-[15px] !tracking-[-1%]">Join Today</p>
           </Link>
           <button
@@ -604,9 +604,9 @@ function Home() {
 
         <div className="absolute inset-0 flex items-center justify-center gap-[32px] pointer-events-none max-[800px]:hidden">
           <Link to="https://www.contles.com" className="text-alt alt pointer-events-auto hover:!text-text transition-ease-out duration-200">Home</Link>
-          <Link to="https://www.join.contles.com" className="text-alt alt pointer-events-auto hover:!text-brands transition-ease-out duration-200">For Brands</Link>
-          <Link to="https://www.join.contles.com" className="text-alt alt pointer-events-auto hover:!text-creators transition-ease-out duration-200">For Creators</Link>
-          <Link to="https://www.join.contles.com" className="text-alt alt pointer-events-auto hover:!text-text transition-ease-out duration-200">Blog</Link>
+          <Link to="https://join.contles.com" className="text-alt alt pointer-events-auto hover:!text-brands transition-ease-out duration-200">For Brands</Link>
+          <Link to="https://join.contles.com" className="text-alt alt pointer-events-auto hover:!text-creators transition-ease-out duration-200">For Creators</Link>
+          <Link to="https://join.contles.com" className="text-alt alt pointer-events-auto hover:!text-text transition-ease-out duration-200">Blog</Link>
         </div>
 
       </section>
@@ -710,7 +710,7 @@ function Home() {
             backfaceVisibility: 'hidden',
           }}
         >
-          <Link to="https://www.join.contles.com" className="big-button">
+          <Link to="https://join.contles.com" className="big-button">
             <p className="button-text text-white">Start Marketing</p>
           </Link>
         </motion.div>
@@ -1927,7 +1927,7 @@ transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
   <p className="title w-fit text-center text-white !mt-[24px] !mb-[18px]">Creator marketing Reimagined</p>
 
 
-  <Link to="https://www.join.contles.com" className="big-button !mb-[42px] max-[652px]:!mb-[52px] max-[652px]:!mt-[12px]">
+  <Link to="https://join.contles.com" className="big-button !mb-[42px] max-[652px]:!mb-[52px] max-[652px]:!mt-[12px]">
             <p className="button-text text-white">Start For Free</p>
         </Link>
 
