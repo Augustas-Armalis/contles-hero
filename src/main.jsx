@@ -5,8 +5,10 @@ import './index.css'
 import App from './App.jsx'
 import LenisProvider from './components/LenisProvider.jsx'
 
-// Get the base path from the current location (for GitHub Pages)
-const basename = import.meta.env.PROD ? '/contles-hero' : ''
+// Use Vite's configured base so routing works on both:
+// - custom domain root (BASE_URL = '/')
+// - subpath deploys (e.g. BASE_URL = '/contles-hero/')
+const basename = import.meta.env.BASE_URL.replace(/\/$/, '')
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
