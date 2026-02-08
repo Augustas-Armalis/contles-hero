@@ -173,6 +173,9 @@ function InfiniteLogoCarousel({ logos, speedPxPerSec = LOGO_CAROUSEL_SPEED_PX_PE
               key={logo.name}
               src={`${import.meta.env.BASE_URL}logos/${logo.name}.png`}
               alt={logo.alt}
+              loading="lazy"
+              decoding="async"
+              height="36"
               className="w-auto h-[36px] opacity-70 flex-shrink-0"
             />
           ))}
@@ -185,6 +188,9 @@ function InfiniteLogoCarousel({ logos, speedPxPerSec = LOGO_CAROUSEL_SPEED_PX_PE
                 key={`${logo.name}-repeat-${setIndex}`}
                 src={`${import.meta.env.BASE_URL}logos/${logo.name}.png`}
                 alt={logo.alt}
+                loading="lazy"
+                decoding="async"
+                height="36"
                 className="w-auto h-[36px] opacity-70 flex-shrink-0"
               />
             ))}
@@ -470,7 +476,16 @@ function Home() {
     >
       <section className="relative w-full h-fit max-w-[1100px] flex items-center justify-between">
 
-        <Link to="https://www.contles.com"><img src={`${import.meta.env.BASE_URL}branding/logo.svg`} alt="Contles" className="w-auto h-[24px]" /></Link>
+        <Link to="https://www.contles.com">
+          <img
+            src={`${import.meta.env.BASE_URL}branding/logo.svg`}
+            alt="Contles"
+            decoding="async"
+            fetchPriority="high"
+            height="24"
+            className="w-auto h-[24px]"
+          />
+        </Link>
 
         <div className="flex items-center gap-[6px] justify-center max-[800px]:hidden right-0">
           
@@ -718,6 +733,7 @@ function Home() {
       </motion.section>
 
 
+      {/*
       <div className="w-full flex items-center justify-center !mt-[100px] gap-[32px] max-[1132px]:hidden">
 
         <motion.p 
@@ -777,6 +793,8 @@ function Home() {
                 key={logo.name}
                 src={`${import.meta.env.BASE_URL}logos/${logo.name}.png`} 
                 alt={logo.alt} 
+                loading="lazy"
+                decoding="async"
                 className="w-auto h-[36px]"
                 variants={{
                   hidden: { 
@@ -846,11 +864,12 @@ function Home() {
 
 
       </div>
+      */}
 
 
 
       <motion.div 
-        className="w-full flex items-center justify-center rounded-[24px] border border-border !mt-[32px] aspect-[1100/500] max-[1132px]:aspect-[1100/600] overflow-hidden max-h-[500px] bg-[linear-gradient(266deg,_var(--Influencers,_#FC6262)_0%,_var(--Brands,_#5F0EEC)_100.19%)]  relative max-[690px]:rounded-[16px] max-[650px]:!mt-[16px]"
+        className="w-full flex items-center justify-center rounded-[24px] border border-border !mt-[128px] aspect-[1100/500] max-[1132px]:aspect-[1100/600] overflow-hidden max-h-[500px] bg-[linear-gradient(266deg,_var(--Influencers,_#FC6262)_0%,_var(--Brands,_#5F0EEC)_100.19%)]  relative max-[690px]:rounded-[16px] max-[650px]:!mt-[92px]"
         initial={{ 
           opacity: 0, 
           y: 30,
@@ -867,7 +886,14 @@ function Home() {
           delay: 1.15,
         }}
       >
-        <img className="w-full h-full object-cover absolute top-0 left-0" src={`${import.meta.env.BASE_URL}assets/texture.png`} alt="Texture"/>
+        <img
+          className="w-full h-full object-cover absolute top-0 left-0"
+          src={`${import.meta.env.BASE_URL}assets/texture.png`}
+          alt=""
+          aria-hidden="true"
+          decoding="async"
+          fetchPriority="low"
+        />
 
 
         <div className="w-fit h-fit flex absolute top-[58px] left-[58px] right-[58px] max-[690px]:left-[18px] max-[690px]:right-[18px] max-[690px]:top-[18px] max-[1132px]:left-[48px] max-[1132px]:right-[48px] max-[1132px]:top-[42px]  items-center justify-center !p-[6px] max-[690px]:!p-[4px] backdrop-blur-[28px] border border-white/20 bg-white/24 shadow-[inset_0_0_8.1px_0_rgba(255,255,255,0.14)] rounded-[17px] max-[690px]:rounded-[12px]">
@@ -876,6 +902,9 @@ function Home() {
             <img
               src={`${import.meta.env.BASE_URL}${HERO_PREVIEW_IMAGES[heroPreviewBaseIndex]}`}
               alt="Product preview"
+              decoding="async"
+              fetchPriority="high"
+              loading="eager"
               className="w-full h-auto object-cover rounded-[12px] max-[690px]:rounded-[8px] col-start-1 row-start-1"
             />
 
@@ -885,6 +914,8 @@ function Home() {
                 src={`${import.meta.env.BASE_URL}${HERO_PREVIEW_IMAGES[heroPreviewOverlayIndex]}`}
                 alt=""
                 aria-hidden="true"
+                decoding="async"
+                loading="lazy"
                 className="w-full h-auto object-cover rounded-[12px] max-[690px]:rounded-[8px] col-start-1 row-start-1"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -926,6 +957,7 @@ function Home() {
                     src={`${import.meta.env.BASE_URL}heroicons/${tab.icon}`}
                     alt=""
                     aria-hidden="true"
+                    decoding="async"
                     className={`w-[14px] h-[14px] ${isActive ? 'opacity-100' : 'opacity-54'}`}
                   />
                   <p className={`alt !text-[16px] ${isActive ? 'text-text!' : 'text-alt'}`}>{tab.label}</p>
@@ -950,6 +982,7 @@ function Home() {
                     src={`${import.meta.env.BASE_URL}heroicons/${tab.icon}`}
                     alt=""
                     aria-hidden="true"
+                    decoding="async"
                     className={`w-[14px] h-[14px] ${isActive ? 'opacity-100' : 'opacity-54'}`}
                   />
                   <p className={`alt !text-[16px] ${isActive ? 'text-text!' : 'text-alt'}`}>{tab.label}</p>
@@ -971,7 +1004,12 @@ function Home() {
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
           >
 
-            <img src={`${import.meta.env.BASE_URL}heroicons/briefcase.svg`} alt="icon" className="w-[18px] h-[18px] mb-[6px]" />
+            <img
+              src={`${import.meta.env.BASE_URL}heroicons/briefcase.svg`}
+              alt="icon"
+              decoding="async"
+              className="w-[18px] h-[18px] mb-[6px]"
+            />
             <p className="text-brands bentotitle">Brands</p>
 
             <p className="!mt-[16px] text-alt alt max-[650px]:!text-[16px] text-center max-w-[400px] max-[650px]:max-w-[290px] !leading-[150%]">{activeCopy.brands.description}</p>
@@ -996,7 +1034,12 @@ function Home() {
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
           >
 
-            <img src={`${import.meta.env.BASE_URL}heroicons/camera.svg`} alt="icon" className="w-[18px] h-[18px] mb-[6px]" />
+            <img
+              src={`${import.meta.env.BASE_URL}heroicons/camera.svg`}
+              alt="icon"
+              decoding="async"
+              className="w-[18px] h-[18px] mb-[6px]"
+            />
             <p className="text-creators bentotitle">Creators</p>
 
             <p className="!mt-[16px] text-alt alt max-[650px]:!text-[16px] text-center max-w-[400px] max-[650px]:max-w-[290px] !leading-[150%]">{activeCopy.creators.description}</p>
@@ -1026,8 +1069,18 @@ function Home() {
               whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
               viewport={{ once: true, amount: 0.35 }}
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+              style={{ contentVisibility: 'auto', containIntrinsicSize: '330px 360px' }}
             >
-              <img className="absolute w-full h-auto object-cover top-0 left-0" src={`${import.meta.env.BASE_URL}bento/first.webp`}></img>
+              <img
+                className="absolute w-full h-auto object-cover top-0 left-0"
+                src={`${import.meta.env.BASE_URL}bento/first.webp`}
+                alt=""
+                aria-hidden="true"
+                loading="lazy"
+                decoding="async"
+                width="360"
+                height="330"
+              />
               <div className="absolute left-[16px] bottom-[16px] flex flex-col items-start justify-center gap-[8px]">
                 <p className="bentotitle text-text">Define success</p>
                 <p className="alt text-alt max-w-[220px] !leading-[140%]">Set clear goals, milestones, and KPIs. All in one place</p>
@@ -1040,8 +1093,18 @@ function Home() {
               whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
               viewport={{ once: true, amount: 0.35 }}
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+              style={{ contentVisibility: 'auto', containIntrinsicSize: '330px 360px' }}
             >
-              <img className="absolute w-full h-auto object-cover top-0 left-0" src={`${import.meta.env.BASE_URL}bento/second.webp`}></img>
+              <img
+                className="absolute w-full h-auto object-cover top-0 left-0"
+                src={`${import.meta.env.BASE_URL}bento/second.webp`}
+                alt=""
+                aria-hidden="true"
+                loading="lazy"
+                decoding="async"
+                width="360"
+                height="330"
+              />
               <div className="absolute left-[16px] bottom-[16px] flex flex-col items-start justify-center gap-[8px]">
                 <p className="bentotitle text-text">Creators execute</p>
                 <p className="alt text-alt max-w-[240px] !leading-[140%]">Verified creators join and deliver based on the agreed terms</p>
@@ -1054,8 +1117,18 @@ function Home() {
               whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
               viewport={{ once: true, amount: 0.35 }}
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+              style={{ contentVisibility: 'auto', containIntrinsicSize: '330px 360px' }}
             >
-              <img className="absolute w-full h-auto object-cover top-0 left-0" src={`${import.meta.env.BASE_URL}bento/third.webp`}></img>
+              <img
+                className="absolute w-full h-auto object-cover top-0 left-0"
+                src={`${import.meta.env.BASE_URL}bento/third.webp`}
+                alt=""
+                aria-hidden="true"
+                loading="lazy"
+                decoding="async"
+                width="360"
+                height="330"
+              />
               <div className="absolute left-[16px] bottom-[16px] flex flex-col items-start justify-center gap-[8px]">
                 <p className="bentotitle text-text">Pay when it works</p>
                 <p className="alt text-alt max-w-[220px] !leading-[140%]">Funds are released only when the defined results are met</p>
@@ -1097,9 +1170,6 @@ function Home() {
             How Contles works
             </motion.p>
 
-
-
-
             <div className="w-full flex flex-wrap items-center justify-center gap-[10px]">
 
             <motion.div
@@ -1108,10 +1178,28 @@ function Home() {
               whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
               viewport={{ once: true, amount: 0.35 }}
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+              style={{ contentVisibility: 'auto', containIntrinsicSize: '330px 656px' }}
             >
-              <img className="absolute w-full h-auto object-cover top-0 left-0 max-[1138px]:hidden" src={`${import.meta.env.BASE_URL}bento/fourth.webp`}></img>
-              <img className="absolute w-full h-auto object-cover top-0 left-0 hidden max-[1138px]:flex max-[1056px]:hidden" src={`${import.meta.env.BASE_URL}bento/fourthmedium.webp`}></img>
-              <img className="absolute w-full h-auto object-cover top-0 left-0 hidden max-[1056px]:flex" src={`${import.meta.env.BASE_URL}bento/fourthsmall.webp`}></img>
+              <picture className="absolute top-0 left-0 w-full h-auto">
+                <source
+                  media="(max-width: 1056px)"
+                  srcSet={`${import.meta.env.BASE_URL}bento/fourthsmall.webp`}
+                />
+                <source
+                  media="(max-width: 1138px)"
+                  srcSet={`${import.meta.env.BASE_URL}bento/fourthmedium.webp`}
+                />
+                <img
+                  className="w-full h-auto object-cover"
+                  src={`${import.meta.env.BASE_URL}bento/fourth.webp`}
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                  decoding="async"
+                  width="656"
+                  height="330"
+                />
+              </picture>
 
 
               <div className="absolute left-[16px] top-[16px] flex flex-col items-start justify-center gap-[8px]">
@@ -1126,9 +1214,24 @@ function Home() {
               whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
               viewport={{ once: true, amount: 0.35 }}
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+              style={{ contentVisibility: 'auto', containIntrinsicSize: '330px 434px' }}
             >
-              <img className="absolute w-full h-auto object-cover top-0 left-0 max-[1056px]:hidden" src={`${import.meta.env.BASE_URL}bento/fifth.webp`}></img>
-              <img className="absolute w-full h-auto object-cover top-0 left-0 hidden max-[1056px]:flex" src={`${import.meta.env.BASE_URL}bento/fifthsmall.webp`}></img>
+              <picture className="absolute top-0 left-0 w-full h-auto">
+                <source
+                  media="(max-width: 1056px)"
+                  srcSet={`${import.meta.env.BASE_URL}bento/fifthsmall.webp`}
+                />
+                <img
+                  className="w-full h-auto object-cover"
+                  src={`${import.meta.env.BASE_URL}bento/fifth.webp`}
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                  decoding="async"
+                  width="434"
+                  height="330"
+                />
+              </picture>
               <div className="absolute left-[16px] top-[16px] flex flex-col items-start justify-center gap-[8px]">
                 <p className="bentotitle text-white">Verified creators</p>
                 <p className="alt text-alt !leading-[140%]">Real portfolios, work history, and ratings</p>
@@ -1147,9 +1250,24 @@ function Home() {
               whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
               viewport={{ once: true, amount: 0.35 }}
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+              style={{ contentVisibility: 'auto', containIntrinsicSize: '330px 434px' }}
             >
-              <img className="absolute w-full h-auto object-cover top-0 left-0 max-[1056px]:hidden" src={`${import.meta.env.BASE_URL}bento/sixth.webp`}></img>
-              <img className="absolute w-full h-auto object-cover top-0 left-0 hidden max-[1056px]:flex" src={`${import.meta.env.BASE_URL}bento/sixthsmall.webp`}></img>
+              <picture className="absolute top-0 left-0 w-full h-auto">
+                <source
+                  media="(max-width: 1056px)"
+                  srcSet={`${import.meta.env.BASE_URL}bento/sixthsmall.webp`}
+                />
+                <img
+                  className="w-full h-auto object-cover"
+                  src={`${import.meta.env.BASE_URL}bento/sixth.webp`}
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                  decoding="async"
+                  width="434"
+                  height="330"
+                />
+              </picture>
               <div className="absolute left-[16px] top-[16px] flex flex-col items-start justify-center gap-[8px]">
                 <p className="bentotitle text-white">Secure payments</p>
                 <p className="alt text-alt !leading-[140%]">Handled inside the platform, not DMs</p>
@@ -1163,10 +1281,28 @@ function Home() {
               whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
               viewport={{ once: true, amount: 0.35 }}
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+              style={{ contentVisibility: 'auto', containIntrinsicSize: '330px 656px' }}
             >
-              <img className="absolute w-full h-auto object-cover top-0 left-0 max-[1138px]:hidden" src={`${import.meta.env.BASE_URL}bento/seventh.webp`}></img>
-              <img className="absolute w-full h-auto object-cover top-0 left-0 hidden max-[1138px]:flex max-[1056px]:hidden" src={`${import.meta.env.BASE_URL}bento/seventhmedium.webp`}></img>
-              <img className="absolute w-full h-auto object-cover top-0 left-0 hidden max-[1056px]:flex" src={`${import.meta.env.BASE_URL}bento/seventhsmall.webp`}></img>
+              <picture className="absolute top-0 left-0 w-full h-auto">
+                <source
+                  media="(max-width: 1056px)"
+                  srcSet={`${import.meta.env.BASE_URL}bento/seventhsmall.webp`}
+                />
+                <source
+                  media="(max-width: 1138px)"
+                  srcSet={`${import.meta.env.BASE_URL}bento/seventhmedium.webp`}
+                />
+                <img
+                  className="w-full h-auto object-cover"
+                  src={`${import.meta.env.BASE_URL}bento/seventh.webp`}
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                  decoding="async"
+                  width="656"
+                  height="330"
+                />
+              </picture>
 
               <div className="absolute left-[16px] top-[16px] flex flex-col items-start justify-center gap-[8px]">
                 <p className="bentotitle text-white">Work directly</p>
@@ -1960,7 +2096,15 @@ transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
 
 
 
-        <img className="w-full h-full object-cover absolute top-0 left-0" src={`${import.meta.env.BASE_URL}assets/texture.png`} alt="Texture"/>
+        <img
+          className="w-full h-full object-cover absolute top-0 left-0"
+          src={`${import.meta.env.BASE_URL}assets/texture.png`}
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+          decoding="async"
+          fetchPriority="low"
+        />
 
 
 
@@ -1990,11 +2134,61 @@ transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
           className="flex items-center justify-center gap-[10px] w-fit">
         <p className="alt text-alt opacity-70">Follow us on</p>
         <div className="flex items-center justify-center gap-[6px] w-fit">
-          <Link to="https://www.instagram.com/trycontles/" target="_blank" className="hover:opacity-80 transition-ease-out duration-200"><img src={`${import.meta.env.BASE_URL}heroicons/color-instagram.png`} alt="Instagram" className="w-[24px] h-[24px]" /></Link>
-          <Link to="https://www.tiktok.com/@trycontles" target="_blank" className="hover:opacity-80 transition-ease-out duration-200"><img src={`${import.meta.env.BASE_URL}heroicons/color-tiktok.png`} alt="TikTok" className="w-[24px] h-[24px]" /></Link>
-          <Link to="https://www.linkedin.com/company/contles/" target="_blank" className="hover:opacity-80 transition-ease-out duration-200"><img src={`${import.meta.env.BASE_URL}heroicons/color-linkedin.png`} alt="LinkedIn" className="w-[24px] h-[24px]" /></Link>
-          <Link to="https://x.com/trycontles" target="_blank" className="hover:opacity-80 transition-ease-out duration-200"><img src={`${import.meta.env.BASE_URL}heroicons/color-twitter.png`} alt="X" className="w-[24px] h-[24px]" /></Link>
-          <Link to="https://www.facebook.com/profile.php?id=61585310110358" target="_blank" className="hover:opacity-80 transition-ease-out duration-200"><img src={`${import.meta.env.BASE_URL}heroicons/color-facebook.png`} alt="Facebook" className="w-[24px] h-[24px]" /></Link>
+          <Link to="https://www.instagram.com/trycontles/" target="_blank" className="hover:opacity-80 transition-ease-out duration-200">
+            <img
+              src={`${import.meta.env.BASE_URL}heroicons/color-instagram.png`}
+              alt="Instagram"
+              loading="lazy"
+              decoding="async"
+              width="24"
+              height="24"
+              className="w-[24px] h-[24px]"
+            />
+          </Link>
+          <Link to="https://www.tiktok.com/@trycontles" target="_blank" className="hover:opacity-80 transition-ease-out duration-200">
+            <img
+              src={`${import.meta.env.BASE_URL}heroicons/color-tiktok.png`}
+              alt="TikTok"
+              loading="lazy"
+              decoding="async"
+              width="24"
+              height="24"
+              className="w-[24px] h-[24px]"
+            />
+          </Link>
+          <Link to="https://www.linkedin.com/company/contles/" target="_blank" className="hover:opacity-80 transition-ease-out duration-200">
+            <img
+              src={`${import.meta.env.BASE_URL}heroicons/color-linkedin.png`}
+              alt="LinkedIn"
+              loading="lazy"
+              decoding="async"
+              width="24"
+              height="24"
+              className="w-[24px] h-[24px]"
+            />
+          </Link>
+          <Link to="https://x.com/trycontles" target="_blank" className="hover:opacity-80 transition-ease-out duration-200">
+            <img
+              src={`${import.meta.env.BASE_URL}heroicons/color-twitter.png`}
+              alt="X"
+              loading="lazy"
+              decoding="async"
+              width="24"
+              height="24"
+              className="w-[24px] h-[24px]"
+            />
+          </Link>
+          <Link to="https://www.facebook.com/profile.php?id=61585310110358" target="_blank" className="hover:opacity-80 transition-ease-out duration-200">
+            <img
+              src={`${import.meta.env.BASE_URL}heroicons/color-facebook.png`}
+              alt="Facebook"
+              loading="lazy"
+              decoding="async"
+              width="24"
+              height="24"
+              className="w-[24px] h-[24px]"
+            />
+          </Link>
         </div>
         </motion.div>
           
