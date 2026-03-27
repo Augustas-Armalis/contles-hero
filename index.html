@@ -67,6 +67,16 @@
     <script>
       document.documentElement.classList.add('js');
     </script>
+    <script>
+      // Restore path saved by 404.html (GitHub Pages SPA redirect)
+      (function () {
+        var redirect = sessionStorage.getItem('gh_pages_redirect');
+        if (redirect) {
+          sessionStorage.removeItem('gh_pages_redirect');
+          history.replaceState(null, '', redirect);
+        }
+      })();
+    </script>
 
     <script type="application/ld+json">
       {
