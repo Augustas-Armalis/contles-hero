@@ -439,13 +439,13 @@ function Home() {
               </div>
 
 
-              <div className="w-full h-fit !py-[18px] !px-[14px] flex flex-col items-center justify-center border-t border-border">
+              {/* <div className="w-full h-fit !py-[18px] !px-[14px] flex flex-col items-center justify-center border-t border-border">
 
               <Link to="/contact" className="alt-small-button !w-full !py-[8px] !px-[14px] !rounded-[12px]">
             <p className="small-button-text text-text !text-[18px]">Contact</p>
               </Link>
-                
-              </div>
+
+              </div> */}
 
 
 
@@ -489,9 +489,9 @@ function Home() {
 
         <div className="flex items-center gap-[6px] justify-center max-[800px]:hidden right-0">
           
-          <Link to="/contact" className="alt-small-button">
+          {/* <Link to="/contact" className="alt-small-button">
             <p className="small-button-text text-text">Contact</p>
-          </Link>
+          </Link> */}
 
           <Link to="https://join.contles.com" className="small-button ">
             <p className="small-button-text text-white">Join Today</p>
