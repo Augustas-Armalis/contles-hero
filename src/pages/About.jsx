@@ -46,7 +46,7 @@ function About() {
           >
             <p>
               This is your second page. You can customize this content to tell your story,
-              share your mission, or provide more information about your project.
+              share your mission, or provide more information about your project.x
             </p>
             <p>
               The page includes smooth animations powered by Framer Motion and is styled
