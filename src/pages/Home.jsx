@@ -8,7 +8,7 @@ const LOGOS = [
   { name: 'chazz', alt: 'Chazz' },
   { name: 'cannumo', alt: 'Cannumo' },
   { name: 'lost-astronaut', alt: 'Lost Astronaut' },
-  { name: 'brite', alt: 'Brite' },
+  // { name: 'brite', alt: 'Brite' },
   { name: 'celper', alt: 'Celper' },
   { name: 'firstpick', alt: 'Firstpick' },
   { name: 'sapone', alt: 'Sapone' },
