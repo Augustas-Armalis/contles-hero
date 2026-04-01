@@ -7,11 +7,11 @@ const LOGOS = [
   { name: 'tesonet', alt: 'Tesonet' },
   { name: 'chazz', alt: 'Chazz' },
   { name: 'cannumo', alt: 'Cannumo' },
-  { name: 'surfshark', alt: 'Surfshark' },
+  { name: 'lost-astronaut', alt: 'Lost Astronaut' },
   { name: 'brite', alt: 'Brite' },
-  { name: 'unicorns', alt: 'Unicorns' },
-  { name: 'tv3', alt: 'TV3' },
-  { name: 'saily', alt: 'Saily' },
+  { name: 'celper', alt: 'Celper' },
+  { name: 'firstpick', alt: 'Firstpick' },
+  { name: 'sapone', alt: 'Sapone' },
   { name: 'ism', alt: 'ISM' },
 ]
 
@@ -171,7 +171,7 @@ function InfiniteLogoCarousel({ logos, speedPxPerSec = LOGO_CAROUSEL_SPEED_PX_PE
           {logos.map((logo) => (
             <img
               key={logo.name}
-              src={`${import.meta.env.BASE_URL}logos/${logo.name}.png`}
+              src={`${import.meta.env.BASE_URL}logos/${logo.name}.webp`}
               alt={logo.alt}
               loading="lazy"
               decoding="async"
@@ -186,7 +186,7 @@ function InfiniteLogoCarousel({ logos, speedPxPerSec = LOGO_CAROUSEL_SPEED_PX_PE
             {logos.map((logo) => (
               <img
                 key={`${logo.name}-repeat-${setIndex}`}
-                src={`${import.meta.env.BASE_URL}logos/${logo.name}.png`}
+                src={`${import.meta.env.BASE_URL}logos/${logo.name}.webp`}
                 alt={logo.alt}
                 loading="lazy"
                 decoding="async"
@@ -733,7 +733,7 @@ function Home() {
       </motion.section>
 
 
-      {/*
+      
       <div className="w-full flex items-center justify-center !mt-[100px] gap-[32px] max-[1132px]:hidden">
 
         <motion.p 
@@ -774,47 +774,26 @@ function Home() {
           }}
         />
 
-          <motion.div 
-            className="w-fit flex items-center justify-center gap-[32px] opacity-70"
-            initial="hidden"
-            animate="visible"
-            variants={{
-              hidden: {},
-              visible: {
-                transition: {
-                  staggerChildren: 0.05,
-                  delayChildren: 1.25,
-                },
-              },
-            }}
-          >
-            {logos.map((logo) => (
-              <motion.img 
-                key={logo.name}
-                src={`${import.meta.env.BASE_URL}logos/${logo.name}.png`} 
-                alt={logo.alt} 
-                loading="lazy"
-                decoding="async"
-                className="w-auto h-[36px]"
-                variants={{
-                  hidden: { 
-                    opacity: 0, 
-                    y: 20,
-                    filter: "blur(10px)",
-                  },
-                  visible: { 
-                    opacity: 1, 
-                    y: 0,
-                    filter: "blur(0px)",
-                    transition: {
-                      duration: 0.6,
-                      ease: [0.16, 1, 0.3, 1],
-                    },
-                  },
-                }}
-              />
-            ))}
-          </motion.div>
+        <motion.div
+          className="w-[900px] max-w-[90vw] opacity-70"
+          initial={{
+            opacity: 0,
+            y: 10,
+            filter: 'blur(10px)',
+          }}
+          animate={{
+            opacity: 1,
+            y: 0,
+            filter: 'blur(0px)',
+          }}
+          transition={{
+            duration: 0.8,
+            ease: [0.16, 1, 0.3, 1],
+            delay: 1.25,
+          }}
+        >
+          <InfiniteLogoCarousel logos={logos} />
+        </motion.div>
 
       </div>
 
@@ -864,12 +843,12 @@ function Home() {
 
 
       </div>
-      */}
+     
 
 
 
       <motion.div 
-        className="w-full flex items-center justify-center rounded-[24px] border border-border !mt-[128px] aspect-[1100/500] max-[1132px]:aspect-[1100/600] overflow-hidden max-h-[500px] bg-[linear-gradient(266deg,_var(--Influencers,_#FC6262)_0%,_var(--Brands,_#5F0EEC)_100.19%)]  relative max-[690px]:rounded-[16px] max-[650px]:!mt-[92px]"
+        className="w-full flex items-center justify-center rounded-[24px] border border-border !mt-[24px] aspect-[1100/500] max-[1132px]:aspect-[1100/600] overflow-hidden max-h-[500px] bg-[linear-gradient(266deg,_var(--Influencers,_#FC6262)_0%,_var(--Brands,_#5F0EEC)_100.19%)]  relative max-[690px]:rounded-[16px] max-[650px]:!mt-[16px]"
         initial={{ 
           opacity: 0, 
           y: 30,
